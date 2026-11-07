@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Before You Leave — The Final Inscription</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Bengali typography enhancements */
+.bengali-text {
+  font-family: 'Hind Siliguri', 'Cormorant Garamond', sans-serif;
+}
+
+.final-farewell-stage {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.final-quote-highlight {
+  font-family: 'Cinzel Decorative', 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--wine);
+  line-height: 1.4;
+  margin: 1.2rem 0;
+  text-shadow: 0 1px 3px rgba(185, 154, 98, 0.3);
+}
+
+.final-signature-block {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-close-book-cinematic {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.4rem;
+  background: var(--wine);
+  color: var(--antique-parchment);
+  border: 1px solid var(--antique-gold);
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 4px 18px rgba(45, 16, 29, 0.45);
+  margin-top: 1.5rem;
+}
+
+.btn-close-book-cinematic:hover {
+  background: var(--antique-gold);
+  color: var(--midnight-navy);
+  box-shadow: 0 0 25px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+/* Book Closing Cinematic Animation Stage */
+#bookClosingAnimationStage {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 14, 27, 0.94);
+  backdrop-filter: blur(14px);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.closing-book-mockup {
+  width: min(380px, 85vw);
+  height: min(520px, 75vh);
+  background: radial-gradient(circle at 50% 40%, #572034 0%, #30111d 70%, #1a0810 100%);
+  border: 3px solid var(--antique-gold);
+  border-radius: 6px 14px 14px 6px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 50px rgba(185, 154, 98, 0.5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  animation: bookCloseFloat 3s ease forwards;
+}
+
+@keyframes bookCloseFloat {
+  0% { transform: scale(1.08) rotateY(-35deg); opacity: 0.8; }
+  50% { transform: scale(1) rotateY(-5deg); opacity: 1; box-shadow: 0 0 70px rgba(255, 223, 136, 0.8); }
+  100% { transform: scale(0.92) rotateY(0deg); opacity: 0; filter: blur(4px); }
+}
+
+/* ✦ THE GRAND PROPOSAL SCENE ✦ */
+#proposalSceneOverlay {
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 50% 30%, rgba(101, 51, 74, 0.4) 0%, transparent 70%),
+    radial-gradient(circle at 50% 80%, rgba(23, 29, 58, 0.9) 0%, transparent 80%),
+    linear-gradient(to bottom, #0d1224 0%, #161b36 50%, #080b16 100%);
+  z-index: 600;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+}
+
+.proposal-card-box {
+  background: var(--antique-parchment);
+  max-width: 680px;
+  width: 100%;
+  padding: 3.5rem 2.8rem;
+  border-radius: 8px;
+  border: 2px solid var(--antique-gold);
+  box-shadow: 
+    0 25px 70px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(185, 154, 98, 0.35),
+    inset 0 0 35px rgba(185, 154, 98, 0.2);
+  text-align: center;
+  position: relative;
+  animation: proposalPop 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes proposalPop {
+  0% { transform: scale(0.9) translateY(25px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.proposal-celestial-icon {
+  font-size: 3rem;
+  color: var(--antique-gold);
+  margin-bottom: 1rem;
+  display: inline-block;
+  animation: heartGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes heartGlow {
+  0% { transform: scale(0.95); filter: drop-shadow(0 0 8px rgba(185, 154, 98, 0.4)); }
+  100% { transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(255, 223, 136, 0.8)); }
+}
+
+.proposal-lead-text {
+  font-family: 'Hind Siliguri', 'Cormorant Garamond', sans-serif;
+  font-size: 1.55rem;
+  color: var(--dusty-burgundy);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  animation: fadeIn 1.2s ease 0.4s forwards;
+}
+
+.proposal-question-big {
+  font-family: 'Hind Siliguri', 'Cinzel Decorative', serif;
+  font-size: clamp(2.3rem, 6vw, 3.4rem);
+  color: var(--wine);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(101, 51, 74, 0.15);
+  opacity: 0;
+  animation: fadeIn 1.2s ease 1s forwards;
+}
+
+.proposal-playful-feedback {
+  min-height: 2.2rem;
+  font-family: 'Hind Siliguri', cursive, sans-serif;
+  font-size: 1.25rem;
+  color: #a82337;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  animation: feedbackBounce 0.4s ease;
+}
+
+@keyframes feedbackBounce {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.proposal-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn-proposal-no {
+  padding: 0.85rem 2.2rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--antique-gold);
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--ink-brown);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-proposal-no:hover {
+  background: rgba(168, 120, 130, 0.25);
+  border-color: var(--dusty-burgundy);
+  transform: translateY(-2px);
+}
+
+.btn-proposal-yes {
+  padding: 1.05rem 3.4rem;
+  background: linear-gradient(135deg, var(--wine), #5a182b);
+  border: 2px solid var(--antique-gold);
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #fff9ea;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 25px rgba(101, 51, 74, 0.5), 0 0 20px var(--gold-glow);
+}
+
+.btn-proposal-yes:hover {
+  background: var(--antique-gold);
+  color: var(--midnight-navy);
+  box-shadow: 0 0 35px var(--gold-glow);
+  transform: translateY(-3px) scale(1.04);
+}
+
+/* ✦ GRAND YES CELEBRATION ✦ */
+#celebrationScreen {
+  display: none;
+  text-align: center;
+  animation: celebrationIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes celebrationIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.celebration-badge-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #b32d43;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255, 223, 136, 0.8);
+}
+
+.celebration-sub-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.35rem;
+  letter-spacing: 4px;
+  color: var(--antique-gold);
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+}
+
+.celebration-bengali-verse {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 1.45rem;
+  line-height: 1.8;
+  color: var(--wine);
+  font-weight: 600;
+  max-width: 540px;
+  margin: 0 auto 1.5rem;
+}
+
+.celebration-bengali-subverse {
+  font-family: 'Hind Siliguri', cursive, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--dusty-burgundy);
+  margin-bottom: 2.2rem;
+}
+
+.btn-return-universe {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2.6rem;
+  background: var(--wine);
+  color: var(--antique-parchment);
+  border: 1px solid var(--antique-gold);
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.35s ease;
+  box-shadow: 0 4px 20px rgba(45, 16, 29, 0.4);
+}
+
+.btn-return-universe:hover {
+  background: var(--antique-gold);
+  color: var(--midnight-navy);
+  box-shadow: 0 0 25px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+/* Floating Golden Flower Petals & Confetti Particles */
+.confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 650;
+  display: none;
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+<canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+<!-- MAIN STORYBOOK -->
+<div class="book-universe-stage">
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()"><span>📜</span> Chapters</button>
+      <button class="btn-lock-book" onclick="lockStorybook()"><span>🔒</span> Lock Book</button>
+    </div>
+  </header>
+
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="secret-room.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+
+    <!-- LEFT PAGE: Final Photograph & Reflection -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter XIII</span>
+        <span>The Final Leaf</span>
+      </div>
+
+      <span class="chapter-numeral">Conclusion</span>
+      <h1 class="chapter-heading">Before You Leave...</h1>
+      <p class="chapter-subheading">"One last little thought before the cover gently rests."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <div class="antique-photo-frame antique-photo-corners">
+        <img src="public/assets/images/hero/hero-final.jpg" alt="Final Portrait" loading="lazy"/>
+        <p class="antique-photo-caption">"Until the next page begins..."</p>
+      </div>
+
+      <div class="storybook-prose" style="margin-top:1.5rem;">
+        <p>
+          You have reached the final parchment of this celestial journal. Every word, every folded note, every wish, and every starlit memory was gathered and preserved here for one reason alone—to remind you how precious you are to me.
+        </p>
+      </div>
+
+      <div class="page-number-footer">Page 24</div>
+    </section>
+
+    <!-- RIGHT PAGE: Final Letter & Close The Book Trigger -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Epilogue</span>
+        <span>Unending Story</span>
+      </div>
+
+      <div class="final-farewell-stage">
+        <div style="font-size:2.4rem;color:var(--antique-gold);margin-bottom:0.6rem;">✦</div>
+        
+        <div class="storybook-prose" style="text-align:left;font-size:1.08rem;line-height:1.9;">
+          <p>
+            If you have turned all the pages of this storybook, you have journeyed through a world I created just for you.
+          </p>
+          <p>
+            I hope that whenever you open this book, you remember that the little things about you are never little to me. Thank you for being my favourite memory, my dearest thought, and the sweetest part of my life.
+          </p>
+          <p>
+            And remember—the end of this book is only a marker.
+          </p>
+        </div>
+
+        <div class="final-quote-highlight">
+          "Our story is still being written."
+        </div>
+
+        <div class="final-signature-block">
+          <p class="handwritten-note" style="font-size:1.45rem;">
+            Made with love, just for you.<br/>
+            Always and forever, Pakhi.
+          </p>
+
+          <!-- The Trigger: Close the Book -->
+          <div>
+            <button class="btn-close-book-cinematic" onclick="triggerBookClosingCinematic()">
+              <span>✦</span> Close the Book <span>✦</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-number-footer">Page 25</div>
+    </section>
+  </main>
+
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="secret-room.html" class="btn-book-nav btn-prev"><span>‹</span> ✦ Secret Room</a>
+    <span class="book-current-indicator">Chapter XIII · Page 24-25</span>
+    <span style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--champagne-gold);letter-spacing:1px;">✦ The End of the Book ✦</span>
+  </nav>
+</div>
+
+<!-- CINEMATIC BOOK CLOSING ANIMATION STAGE -->
+<div id="bookClosingAnimationStage">
+  <div class="closing-book-mockup">
+    <div style="font-size:3rem;color:var(--antique-gold);margin-bottom:1rem;">✦</div>
+    <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.8rem;color:var(--champagne-gold);margin-bottom:0.5rem;">
+      SHOKHER CORNER
+    </h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted-rose);font-size:1.1rem;">
+      "Written in little wishes, remembered in stars."
+    </p>
+  </div>
+</div>
+
+<!-- ✦ THE GRAND PROPOSAL SCENE ✦ -->
+<div id="proposalSceneOverlay">
+  <div class="proposal-card-box">
+    <!-- Active Proposal Content -->
+    <div id="proposalQuestionBlock">
+      <div class="proposal-celestial-icon">❤️</div>
+      
+      <p class="proposal-lead-text">
+        আজীবন তোমার পাশে থাকতে চাই...
+      </p>
+
+      <h1 class="proposal-question-big">
+        বিয়ে করবে আমাকে?
+      </h1>
+
+      <p class="proposal-playful-feedback" id="playfulFeedback"></p>
+
+      <div class="proposal-buttons-row">
+        <button class="btn-proposal-no" id="btnProposalNo" onclick="handleProposalNo()">
+          No
+        </button>
+        <button class="btn-proposal-yes" id="btnProposalYes" onclick="handleProposalYes()">
+          Yes ❤️
+        </button>
+      </div>
+    </div>
+
+    <!-- Celebration Screen (When Yes is Clicked) -->
+    <div id="celebrationScreen">
+      <div style="font-size:3.5rem;color:#b32d43;margin-bottom:0.8rem;animation:heartGlow 1.5s infinite alternate;">
+        💖
+      </div>
+
+      <h2 class="celebration-badge-title">
+        CONGRATULATIONS! ❤️
+      </h2>
+      <p class="celebration-sub-title">
+        She said YES!
+      </p>
+
+      <div class="chapter-divider" style="margin-bottom:1.5rem;">✦ · ✤ · ✦</div>
+
+      <p class="celebration-bengali-verse">
+        "আমাদের গল্পের সবচেয়ে সুন্দর অধ্যায়টা এবার শুরু হোক।"
+      </p>
+
+      <p class="celebration-bengali-subverse">
+        "আজ থেকে শুধু স্বপ্ন নয়, একসাথে সেই স্বপ্নগুলো পূরণ করার অপেক্ষা।"
+      </p>
+
+      <div style="margin-top:2.4rem;">
+        <p style="font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:3px;color:var(--antique-gold);text-transform:uppercase;margin-bottom:1rem;">
+          A New Chapter Begins... With love, for all the tomorrows.
+        </p>
+        <a href="index.html" class="btn-return-universe">
+          <span>↺</span> Return to Our Little Universe
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+<script>
+// Playful messages when clicking NO
+const playfulNoMessages = [
+  "না? তাহলে কি আরেকবার ভাববে? 🥺",
+  "আবার ভাবো না, প্লিজ?",
+  "এত সহজে না বলে দিলে?",
+  "আমি কিন্তু সত্যিই সারাজীবন পাশে থাকতে চাই।",
+  "আরেকবার ভেবে দেখবে, পাখি?",
+  "তাহলে কি আবার জিজ্ঞেস করব?"
+];
+
+let noClickCount = 0;
+
+function triggerBookClosingCinematic() {
+  const closingStage = document.getElementById('bookClosingAnimationStage');
+  closingStage.style.display = 'flex';
+
+  // 1. Book gently closes and floats
+  setTimeout(() => {
+    closingStage.style.display = 'none';
+    // 2. Reveal proposal scene
+    const proposalOverlay = document.getElementById('proposalSceneOverlay');
+    proposalOverlay.style.display = 'flex';
+  }, 2600);
+}
+
+function handleProposalNo() {
+  const feedbackEl = document.getElementById('playfulFeedback');
+  const msg = playfulNoMessages[noClickCount % playfulNoMessages.length];
+  noClickCount++;
+  
+  feedbackEl.style.animation = 'none';
+  void feedbackEl.offsetWidth;
+  feedbackEl.style.animation = 'feedbackBounce 0.4s ease';
+  feedbackEl.textContent = msg;
+
+  // Gently enlarge the YES button to invite her affectionately
+  const yesBtn = document.getElementById('btnProposalYes');
+  const currentScale = 1 + (noClickCount * 0.04);
+  yesBtn.style.transform = `scale(${Math.min(currentScale, 1.25)})`;
+}
+
+function handleProposalYes() {
+  // Hide question and show celebration
+  document.getElementById('proposalQuestionBlock').style.display = 'none';
+  document.getElementById('celebrationScreen').style.display = 'block';
+
+  // Launch celebration confetti and golden petals
+  startConfettiCelebration();
+}
+
+// Confetti & Petals Particle Animation
+function startConfettiCelebration() {
+  const canvas = document.getElementById('confettiCanvas');
+  canvas.style.display = 'block';
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = window.innerWidth;
+  let h = canvas.height = window.innerHeight;
+
+  const particles = [];
+  const colors = ['#FFDF88', '#D8C18C', '#B99A62', '#E8C7CA', '#A87882', '#65334A', '#FFFFFF'];
+
+  for (let i = 0; i < 90; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h - h,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      speedY: Math.random() * 2.5 + 1.2,
+      speedX: Math.random() * 2 - 1,
+      rotation: Math.random() * 360,
+      rotSpeed: Math.random() * 4 - 2,
+      isPetal: Math.random() > 0.4
+    });
+  }
+
+  function renderConfetti() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.rotation += p.rotSpeed;
+
+      if (p.y > h) {
+        p.y = -20;
+        p.x = Math.random() * w;
+      }
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.fillStyle = p.color;
+
+      if (p.isPetal) {
+        // Draw soft rose petal shape
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.size * 0.7, p.size * 1.3, Math.PI / 4, 0, 2 * Math.PI);
+        ctx.fill();
+      } else {
+        // Draw shimmering star/square confetti
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+      }
+      ctx.restore();
+    });
+
+    requestAnimationFrame(renderConfetti);
+  }
+
+  renderConfetti();
+}
+</script>
+</body>
+</html>

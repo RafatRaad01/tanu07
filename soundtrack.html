@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Soundtrack — Melody &amp; Lyrics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Animated Lyrics Screen & Vintage Record Styling */
+.vinyl-record-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.vinyl-disc {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2d101d 0%, #10152b 40%, #060914 100%);
+  border: 4px solid var(--antique-gold);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 0 15px rgba(255, 223, 136, 0.3);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotateVinyl 12s linear infinite;
+}
+
+@keyframes rotateVinyl {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.vinyl-center-label {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--antique-parchment);
+  border: 2px solid var(--antique-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.65rem;
+  color: var(--wine);
+  text-align: center;
+}
+
+/* Kinetic Animated Lyrics Canvas/Box */
+.lyrics-stage-container {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--antique-gold);
+  border-radius: 6px;
+  padding: 1.8rem 1.4rem;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: inset 0 0 20px rgba(185, 154, 98, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.kinetic-lyric-line {
+  font-family: 'Cinzel Decorative', 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--wine);
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  animation: lyricFadeIn 0.8s ease forwards;
+  text-shadow: 0 1px 3px rgba(185, 154, 98, 0.3);
+}
+
+@keyframes lyricFadeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.kinetic-lyric-sub {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: var(--dusty-burgundy);
+  margin-bottom: 1.2rem;
+  animation: lyricFadeIn 1s ease forwards;
+}
+
+.lyrics-progress-dots {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.lyric-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(185, 154, 98, 0.3);
+  transition: all 0.3s;
+}
+
+.lyric-dot.active {
+  background: var(--dusty-burgundy);
+  transform: scale(1.3);
+}
+
+.youtube-player-embed {
+  margin-top: 1.2rem;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--antique-gold);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()"><span>📜</span> Chapters</button>
+      <button class="btn-lock-book" onclick="lockStorybook()"><span>🔒</span> Lock Book</button>
+    </div>
+  </header>
+
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="someday.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="reasons.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: Music Journal & Nilanjana Feature -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter X</span>
+        <span>Melody &amp; Whispers</span>
+      </div>
+
+      <span class="chapter-numeral">Our Soundtrack</span>
+      <h1 class="chapter-heading">Our Melody</h1>
+      <p class="chapter-subheading">"Some songs bring back entire moments in a single chord."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <!-- Vinyl Disc Graphic -->
+      <div class="vinyl-record-wrap">
+        <div class="vinyl-disc">
+          <div class="vinyl-center-label">
+            <span>SHOKHER<br/>MELODY</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="storybook-prose storybook-dropcap">
+        <p>
+          Music has a way of speaking the feelings that words alone cannot capture. Whenever this melody plays, it feels as though the entire universe softens to listen.
+        </p>
+      </div>
+
+      <!-- YouTube Embed for The Song -->
+      <div class="youtube-player-embed">
+        <iframe width="100%" height="160" src="https://www.youtube.com/embed/gCKwgLgb2Z4" title="Our Melody" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <div class="page-number-footer">Page 18</div>
+    </section>
+
+    <!-- RIGHT PAGE: Kinetic Text Animation Lyrics -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Kinetic Poetry</span>
+        <span>Animated Lyrics</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.35rem;color:var(--wine);margin-bottom:0.4rem;text-align:center;">
+        Words Flowing in Motion
+      </h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;text-align:center;color:var(--dusty-burgundy);font-size:0.95rem;margin-bottom:1.2rem;">
+        Text moving gently to the rhythm of our melody.
+      </p>
+
+      <!-- Kinetic Lyric Display Stage -->
+      <div class="lyrics-stage-container">
+        <div id="lyricLineBox" class="kinetic-lyric-line">
+          "তুমি কি জানো নীলাঞ্জনা..."
+        </div>
+        <div id="lyricSubBox" class="kinetic-lyric-sub">
+          "কতটা নিঃশব্দে তোমাকে চেয়েছি..."
+        </div>
+
+        <div class="lyrics-progress-dots" id="lyricDots">
+          <span class="lyric-dot active"></span>
+          <span class="lyric-dot"></span>
+          <span class="lyric-dot"></span>
+          <span class="lyric-dot"></span>
+          <span class="lyric-dot"></span>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:1.4rem;">
+        <button class="btn-book-nav" style="padding:0.45rem 1.2rem;font-size:0.75rem;" onclick="nextLyric()">
+          Next Verse <span>›</span>
+        </button>
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:1.8rem;">
+        "Like the song, you became the melody I hum without even realizing it."
+      </p>
+
+      <div class="page-number-footer">Page 19</div>
+    </section>
+  </main>
+
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="someday.html" class="btn-book-nav btn-prev"><span>‹</span> Someday, Together</a>
+    <span class="book-current-indicator">Chapter X · Page 18-19</span>
+    <a href="reasons.html" class="btn-book-nav btn-next">Reasons I Love You <span>›</span></a>
+  </nav>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+<script>
+const lyricVerses = [
+  { line: "তুমি কি জানো নীলাঞ্জনা...", sub: "কতটা নিঃশব্দে তোমাকে চেয়েছি..." },
+  { line: "তোমার চোখের গভীর নীলে...", sub: "আমার সব হারিয়ে যাওয়ার ঠিকানা..." },
+  { line: "এক ফোঁটা বৃষ্টি হয়ে...", sub: "তোমার শাড়ির আঁচলে ছুঁয়ে যাওয়া..." },
+  { line: "সূর্যমুখী আর দোলনচাঁপার ঘ্রাণে...", sub: "প্রতিটি সকাল তোমারই প্রতীক্ষায়..." },
+  { line: "তুমি ছিলে, আছো এবং থাকবে...", sub: "আমার ক্ষুদ্র মহাবিশ্বের রাজকুমারী হয়ে।" }
+];
+
+let curLyricIdx = 0;
+function showLyric(idx) {
+  const item = lyricVerses[idx];
+  const mainBox = document.getElementById('lyricLineBox');
+  const subBox = document.getElementById('lyricSubBox');
+
+  mainBox.style.animation = 'none';
+  subBox.style.animation = 'none';
+  void mainBox.offsetWidth; // trigger reflow
+  mainBox.style.animation = 'lyricFadeIn 0.8s ease forwards';
+  subBox.style.animation = 'lyricFadeIn 1s ease forwards';
+
+  mainBox.textContent = item.line;
+  subBox.textContent = item.sub;
+
+  const dots = document.querySelectorAll('.lyric-dot');
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i === idx);
+  });
+}
+
+function nextLyric() {
+  curLyricIdx = (curLyricIdx + 1) % lyricVerses.length;
+  showLyric(curLyricIdx);
+}
+
+// Auto-advance lyrics every 5 seconds
+setInterval(nextLyric, 5000);
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "memories": [
+    {
+      "title": "Sunflower",
+      "date": "",
+      "image": "public/assets/images/memories/sunflower.jpg",
+      "heading": "The First Little Dream I Fulfilled",
+      "story": "Pakhi, eta tomar deya amar first kono dream. Ekbar bolesila sunflower dite. Kothay kothay ami eta likhe rekhechilam. Ek jaigai erokom seta ami disilam. First dream which ami puron koresi.",
+      "caption": "Your sunflower wish. My first little promise to remember."
+    },
+    {
+      "title": "Mehendi",
+      "date": "",
+      "image": "public/assets/images/memories/mehendi.jpg",
+      "heading": "A Little Art of Yours",
+      "story": "Tomar ei shokh.",
+      "caption": "One of those little things that make you, you."
+    },
+    {
+      "title": "TSC Date",
+      "date": "",
+      "image": "public/assets/images/memories/tsc.jpg",
+      "heading": "A Day at TSC",
+      "story": "TSC date and dolonchapa. Rickshaw diye ghura. Ei gular modhe amar oneek favourite. Tomake dolonchapa kine disi. Tumi bolsila, puron koresi as an artist.",
+      "caption": "Dolonchapa, rickshaw rides, and a day I wish I could relive."
+    },
+    {
+      "title": "Boat Ride",
+      "date": "",
+      "image": "public/assets/images/memories/boat.jpg",
+      "heading": "Somewhere on the Water",
+      "story": "Noukae ghura amar shob favourite memory-r modhye ekta.",
+      "caption": "One of my favourite memories, floating somewhere between the moment and forever."
+    },
+    {
+      "title": "Extra Memory",
+      "date": "",
+      "image": "public/assets/images/memories/memory1.jpg",
+      "heading": "[Editable]",
+      "story": "[Editable]",
+      "caption": "[Editable]"
+    }
+  ]
+}

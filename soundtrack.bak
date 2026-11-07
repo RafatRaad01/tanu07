@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Soundtrack – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.page-hero{background:linear-gradient(160deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+.tracks-wrap{max-width:800px;margin:5rem auto;padding:0 1.5rem 5rem;}
+.track-card{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem;border-bottom:1px solid rgba(74,23,41,.08);transition:.3s;}
+.track-card:hover{background:var(--cream);}
+.track-num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);min-width:2rem;line-height:1;}
+.track-info{flex:1;}
+.track-title{font-size:1.3rem;color:var(--burgundy);margin-bottom:.2rem;}
+.track-artist{font-size:.82rem;color:var(--rose);margin-bottom:.6rem;letter-spacing:1px;}
+.track-desc{font-size:.85rem;line-height:1.65;color:var(--wine);}
+.track-player{margin-top:.8rem;}
+.track-player audio{width:100%;height:36px;outline:none;}
+.track-placeholder{margin-top:.8rem;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--rose);font-style:italic;}
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li><li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li><li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html" class="active">Soundtrack</a></li><li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<div class="page-hero">
+  <p class="page-label">Chapter Nine</p>
+  <h1 class="page-title">Our Soundtrack</h1>
+  <p class="page-sub">Some songs bring back entire moments.</p>
+</div>
+<div class="tracks-wrap">
+  <div class="track-card"><span class="track-num">01</span><div class="track-info"><h3 class="track-title">[Song Title]</h3><p class="track-artist">[Artist Name]</p><p class="track-desc">[Edit this — write why this song matters. What memory does it bring back? When did you hear it together?]</p><p class="track-placeholder">Add audio file: public/assets/audio/track1.mp3</p></div></div>
+  <div class="track-card"><span class="track-num">02</span><div class="track-info"><h3 class="track-title">[Song Title]</h3><p class="track-artist">[Artist Name]</p><p class="track-desc">[Edit this — write why this song feels like you two.]</p><p class="track-placeholder">Add audio file: public/assets/audio/track2.mp3</p></div></div>
+  <div class="track-card"><span class="track-num">03</span><div class="track-info"><h3 class="track-title">[Song Title]</h3><p class="track-artist">[Artist Name]</p><p class="track-desc">[Edit this — a song that reminds you of her even when she is not around.]</p><p class="track-placeholder">Add audio file: public/assets/audio/track3.mp3</p></div></div>
+  <div class="track-card"><span class="track-num">04</span><div class="track-info"><h3 class="track-title">[Song Title]</h3><p class="track-artist">[Artist Name]</p><p class="track-desc">[Edit this — add your personal songs here. Place the mp3 in public/assets/audio/ and use an audio tag.]</p><p class="track-placeholder">Add audio file: public/assets/audio/track4.mp3</p></div></div>
+  <div class="track-card"><span class="track-num">05</span><div class="track-info"><h3 class="track-title">[Song Title]</h3><p class="track-artist">[Artist Name]</p><p class="track-desc">[Edit this — the last song on the playlist. Make it count.]</p><p class="track-placeholder">Add audio file: public/assets/audio/track5.mp3</p></div></div>
+</div>
+<footer><p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Soundtrack &nbsp;·&nbsp; Shokher Corner</p></footer>
+<script>document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));</script>
+</body>
+</html>

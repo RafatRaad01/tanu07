@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Little Things About You — Handwritten Observations</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Little Things Cards */
+.little-things-book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.little-note-pinned {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--antique-gold);
+  border-radius: 4px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 12px rgba(68, 52, 38, 0.08);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.little-note-pinned:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(185, 154, 98, 0.25);
+}
+
+.little-note-pinned::before {
+  content: '✤';
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: var(--antique-gold);
+  font-size: 0.8rem;
+}
+
+.lt-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.lt-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem;
+  color: var(--wine);
+  margin-bottom: 0.4rem;
+}
+
+.lt-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--ink-brown);
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()"><span>📜</span> Chapters</button>
+      <button class="btn-lock-book" onclick="lockStorybook()"><span>🔒</span> Lock Book</button>
+    </div>
+  </header>
+
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="open-when.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="our-universe.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: Notes 1 - 4 -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter VII</span>
+        <span>The Quiet Details</span>
+      </div>
+
+      <span class="chapter-numeral">Observations</span>
+      <h1 class="chapter-heading">Little Things About You</h1>
+      <p class="chapter-subheading">"It is the quiet, unnoticed details that make you completely unforgettable."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <div class="little-things-book-grid">
+        <!-- Note 1 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">🌻</span>
+          <h3 class="lt-title">Your Little Wishes</h3>
+          <p class="lt-desc">You remember the smallest wishes—a sunflower, a dolonchapa flower, a boat ride. Those gentle dreams reveal the softness of your heart.</p>
+        </div>
+
+        <!-- Note 2 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">🎨</span>
+          <h3 class="lt-title">Your Artistic Spirit</h3>
+          <p class="lt-desc">The mehendi drawn on your hands, your eye for colors and subtle beauty. You see poetry where others only see the mundane.</p>
+        </div>
+
+        <!-- Note 3 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">🌸</span>
+          <h3 class="lt-title">Your Love for Flowers</h3>
+          <p class="lt-desc">Dolonchapa, kadam, orchids, beli. You have an entire garden blossoming in your dreams, and I cherish each petal.</p>
+        </div>
+
+        <!-- Note 4 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">🌧</span>
+          <h3 class="lt-title">You and the Rain</h3>
+          <p class="lt-desc">Visiting TSC in the rain, longing for Shapla Bil during monsoons. Rain belongs to your happiest stories.</p>
+        </div>
+      </div>
+
+      <div class="page-number-footer">Page 12</div>
+    </section>
+
+    <!-- RIGHT PAGE: Notes 5 - 8 -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Treasured Peculiarities</span>
+        <span>Part II</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.4rem;color:var(--wine);margin-bottom:0.4rem;text-align:center;">
+        Things I Remember
+      </h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;text-align:center;color:var(--dusty-burgundy);font-size:0.95rem;margin-bottom:1.2rem;">
+        The memories etched forever in my soul.
+      </p>
+
+      <div class="little-things-book-grid">
+        <!-- Note 5 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">✨</span>
+          <h3 class="lt-title">Your Rare Smile</h3>
+          <p class="lt-desc">When you truly smile, time seems to pause. It carries a genuine warmth that turns the darkest cosmic night into dawn.</p>
+        </div>
+
+        <!-- Note 6 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">🛶</span>
+          <h3 class="lt-title">Adventurous Soul</h3>
+          <p class="lt-desc">Quiet rickshaw rides, floating on wooden boats, eager to explore the world with quiet curiosity.</p>
+        </div>
+
+        <!-- Note 7 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">🎵</span>
+          <h3 class="lt-title">Your Voice</h3>
+          <p class="lt-desc">You once wished to sing. To me, every melody you whisper is sweeter than any symphony written in stars.</p>
+        </div>
+
+        <!-- Note 8 -->
+        <div class="little-note-pinned">
+          <span class="lt-icon">📝</span>
+          <h3 class="lt-title">Unspoken Kindness</h3>
+          <p class="lt-desc">The way you listen with intent, remembering people's small words. I remember more about you than you ever think.</p>
+        </div>
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:2.2rem;">
+        "I remember the little things about you... and the little things are everything."
+      </p>
+
+      <div class="page-number-footer">Page 13</div>
+    </section>
+  </main>
+
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="open-when.html" class="btn-book-nav btn-prev"><span>‹</span> Open When...</a>
+    <span class="book-current-indicator">Chapter VII · Page 12-13</span>
+    <a href="our-universe.html" class="btn-book-nav btn-next">Our Universe <span>›</span></a>
+  </nav>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+</body>
+</html>

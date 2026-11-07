@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Memory Vault — The Vintage Photo Journal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Scrapbook Grid of Vintage Photos */
+.scrapbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.scrapbook-item {
+  position: relative;
+  background: #fff8ef;
+  padding: 8px 8px 16px;
+  border: 1px solid var(--antique-gold);
+  box-shadow: 0 4px 12px rgba(68, 52, 38, 0.12);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: rotate(var(--rot, 0deg));
+}
+
+.scrapbook-item:hover {
+  transform: scale(1.04) rotate(0deg) !important;
+  box-shadow: 0 8px 25px rgba(68, 52, 38, 0.25);
+  z-index: 5;
+}
+
+.scrapbook-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+
+.scrapbook-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1rem;
+  color: var(--dusty-burgundy);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Modal Lightbox */
+.vintage-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 14, 27, 0.92);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.vintage-lightbox.active {
+  display: flex;
+}
+
+.lightbox-content-box {
+  background: var(--antique-parchment);
+  max-width: 650px;
+  width: 100%;
+  padding: 1.5rem;
+  border: 2px solid var(--antique-gold);
+  border-radius: 6px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.8);
+  position: relative;
+  text-align: center;
+}
+
+.lightbox-content-box img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.lb-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.4rem;
+  color: var(--wine);
+  margin-top: 1rem;
+}
+
+.lb-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.15rem;
+  color: var(--dusty-burgundy);
+  margin-top: 0.4rem;
+}
+
+.lb-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--ink-brown);
+  cursor: pointer;
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()"><span>📜</span> Chapters</button>
+      <button class="btn-lock-book" onclick="lockStorybook()"><span>🔒</span> Lock Book</button>
+    </div>
+  </header>
+
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="shokher-corner.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="letters.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: Scrapbook Intro & First Photo Set -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter IV</span>
+        <span>The Photo Journal</span>
+      </div>
+
+      <span class="chapter-numeral">Keepsakes</span>
+      <h1 class="chapter-heading">Memory Vault</h1>
+      <p class="chapter-subheading">"A quiet treasury of the moments we never want to leave behind."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <div class="scrapbook-grid">
+        <div class="scrapbook-item" style="--rot:-1.5deg;" onclick="openLB('public/assets/images/gallery/memory1.jpg', 'Sweet Beginnings', 'The warmth of your laughter.')">
+          <img src="public/assets/images/gallery/memory1.jpg" alt="Memory" loading="lazy"/>
+          <p class="scrapbook-caption">Sweet Beginnings</p>
+        </div>
+        <div class="scrapbook-item" style="--rot:1.5deg;" onclick="openLB('public/assets/images/gallery/memory2.jpg', 'Shared Glances', 'Moments captured in silence.')">
+          <img src="public/assets/images/gallery/memory2.jpg" alt="Memory" loading="lazy"/>
+          <p class="scrapbook-caption">Shared Glances</p>
+        </div>
+        <div class="scrapbook-item" style="--rot:-2deg;" onclick="openLB('public/assets/images/gallery/memory3.jpg', 'A Beautiful Day', 'The gentle sun and your smile.')">
+          <img src="public/assets/images/gallery/memory3.jpg" alt="Memory" loading="lazy"/>
+          <p class="scrapbook-caption">A Beautiful Day</p>
+        </div>
+        <div class="scrapbook-item" style="--rot:2deg;" onclick="openLB('public/assets/images/gallery/memory4.jpg', 'Timeless Memory', 'Some moments stay forever.')">
+          <img src="public/assets/images/gallery/memory4.jpg" alt="Memory" loading="lazy"/>
+          <p class="scrapbook-caption">Timeless Memory</p>
+        </div>
+      </div>
+
+      <div class="page-number-footer">Page 06</div>
+    </section>
+
+    <!-- RIGHT PAGE: Scrapbook Continued -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Treasured Plates</span>
+        <span>Visual Journal</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.4rem;color:var(--wine);margin-bottom:0.4rem;text-align:center;">
+        Pages from Our Journey
+      </h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;text-align:center;color:var(--dusty-burgundy);font-size:0.95rem;margin-bottom:1.2rem;">
+        Click any photograph to view its inscription.
+      </p>
+
+      <div class="scrapbook-grid">
+        <div class="scrapbook-item" style="--rot:1deg;" onclick="openLB('public/assets/images/wishlist/sunflower.jpg', 'The Sunflower Promise', 'Pakhi, eta tomar deya amar first kono dream.')">
+          <img src="public/assets/images/wishlist/sunflower.jpg" alt="Sunflower" loading="lazy"/>
+          <p class="scrapbook-caption">The Sunflower Promise</p>
+        </div>
+        <div class="scrapbook-item" style="--rot:-1.5deg;" onclick="openLB('public/assets/images/wishlist/mehendi-hand.jpg', 'A Little Art of Yours', 'Tomar ei shokh. The artist in you.')">
+          <img src="public/assets/images/wishlist/mehendi-hand.jpg" alt="Mehendi" loading="lazy"/>
+          <p class="scrapbook-caption">Artistic Hands</p>
+        </div>
+        <div class="scrapbook-item" style="--rot:2deg;" onclick="openLB('public/assets/images/wishlist/tsc-dolonchapa.jpg', 'TSC & Dolonchapa', 'A day I wish I could relive with you.')">
+          <img src="public/assets/images/wishlist/tsc-dolonchapa.jpg" alt="TSC" loading="lazy"/>
+          <p class="scrapbook-caption">A Day at TSC</p>
+        </div>
+        <div class="scrapbook-item" style="--rot:-2deg;" onclick="openLB('public/assets/images/wishlist/boat-ride.jpg', 'Somewhere on the Water', 'Floating together under the open sky.')">
+          <img src="public/assets/images/wishlist/boat-ride.jpg" alt="Boat Ride" loading="lazy"/>
+          <p class="scrapbook-caption">River Memories</p>
+        </div>
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:1.8rem;">
+        "Photographs are proof that happiness once paused time for us."
+      </p>
+
+      <div class="page-number-footer">Page 07</div>
+    </section>
+  </main>
+
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="shokher-corner.html" class="btn-book-nav btn-prev"><span>‹</span> Shokher Corner</a>
+    <span class="book-current-indicator">Chapter IV · Page 6-7</span>
+    <a href="letters.html" class="btn-book-nav btn-next">Letters to You <span>›</span></a>
+  </nav>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="vintage-lightbox" id="vLightbox" onclick="closeLB(event)">
+  <div class="lightbox-content-box">
+    <button class="lb-close" onclick="closeLBDirect()">×</button>
+    <img id="lbImg" src="" alt="Enlarged"/>
+    <h3 class="lb-title" id="lbTitle"></h3>
+    <p class="lb-caption" id="lbCaption"></p>
+  </div>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+<script>
+function openLB(src, title, caption) {
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbTitle').textContent = title;
+  document.getElementById('lbCaption').textContent = caption;
+  document.getElementById('vLightbox').classList.add('active');
+}
+function closeLBDirect() {
+  document.getElementById('vLightbox').classList.remove('active');
+}
+function closeLB(e) {
+  if (e.target.id === 'vLightbox') closeLBDirect();
+}
+</script>
+</body>
+</html>

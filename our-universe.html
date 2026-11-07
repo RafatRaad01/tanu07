@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Little Universe — Constellations of Memories</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Deep Cosmic Sky inside the Book Pages */
+.cosmic-book-chart {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background: radial-gradient(circle at 50% 50%, #1a203f 0%, #0d1224 80%, #060914 100%);
+  border: 1px solid var(--antique-gold);
+  border-radius: 6px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 4px 15px rgba(0,0,0,0.3);
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.cosmic-chart-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.universe-star-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.universe-star-node:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.universe-star-core {
+  width: 12px;
+  height: 12px;
+  background: #fff3d1;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffdf88, 0 0 25px rgba(255, 223, 136, 0.7);
+  animation: starPulse 2.5s infinite alternate;
+}
+
+@keyframes starPulse {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 16px #ffdf88, 0 0 35px #ffeebb; }
+}
+
+.universe-star-label {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  color: var(--champagne-gold);
+  white-space: nowrap;
+  text-shadow: 0 0 6px rgba(0,0,0,0.9);
+  pointer-events: none;
+}
+
+/* Modal for Star Memory */
+.star-memory-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 14, 27, 0.92);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.star-memory-modal.active {
+  display: flex;
+}
+
+.star-memory-paper {
+  background: #fdf6ec;
+  max-width: 520px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  border: 2px solid var(--antique-gold);
+  border-radius: 6px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+  position: relative;
+  text-align: center;
+}
+
+.btn-close-star {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--ink-brown);
+  cursor: pointer;
+}
+
+.star-mem-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.6rem;
+  color: var(--wine);
+  margin-bottom: 0.4rem;
+}
+
+.star-mem-date {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--antique-gold);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.star-mem-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--ink-brown);
+  text-align: left;
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()"><span>📜</span> Chapters</button>
+      <button class="btn-lock-book" onclick="lockStorybook()"><span>🔒</span> Lock Book</button>
+    </div>
+  </header>
+
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="little-things.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="someday.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: Celestial Lore & Intro -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter VIII</span>
+        <span>Celestial Atlas</span>
+      </div>
+
+      <span class="chapter-numeral">Constellations</span>
+      <h1 class="chapter-heading">Our Little Universe</h1>
+      <p class="chapter-subheading">"Some moments shine so bright they deserve their own stars."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <div class="storybook-prose storybook-dropcap">
+        <p>
+          Long before ancient astronomers charted the northern skies, lovers looked upward and named the stars after their quiet memories.
+        </p>
+        <p>
+          On the opposite page is our personal constellation chart. Each glowing point of light represents a promise kept, a day we shared, or a little dream etched into eternity.
+        </p>
+        <p>
+          Touch each star upon the chart to uncover the story it holds.
+        </p>
+      </div>
+
+      <div class="antique-photo-frame antique-photo-corners" style="margin-top:1.8rem;">
+        <img src="public/assets/images/gallery/memory5.jpg" alt="Starlit Memory" loading="lazy"/>
+        <p class="antique-photo-caption">"Written among the eternal constellations."</p>
+      </div>
+
+      <div class="page-number-footer">Page 14</div>
+    </section>
+
+    <!-- RIGHT PAGE: Interactive Star Chart -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>The Star Map</span>
+        <span>Interactive Chart</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.35rem;color:var(--wine);margin-bottom:0.4rem;text-align:center;">
+        The Constellation of Us
+      </h2>
+
+      <!-- Cosmic Chart Container -->
+      <div class="cosmic-book-chart" id="starChartContainer">
+        <svg class="cosmic-chart-svg" id="chartSvgLines"></svg>
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:1.4rem;">
+        "Maybe the universe is unimaginably vast, but my favorite world is the one we share."
+      </p>
+
+      <div class="page-number-footer">Page 15</div>
+    </section>
+  </main>
+
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="little-things.html" class="btn-book-nav btn-prev"><span>‹</span> Little Things</a>
+    <span class="book-current-indicator">Chapter VIII · Page 14-15</span>
+    <a href="someday.html" class="btn-book-nav btn-next">Someday, Together <span>›</span></a>
+  </nav>
+</div>
+
+<!-- Star Memory Modal -->
+<div class="star-memory-modal" id="starModal" onclick="closeStarOverlay(event)">
+  <div class="star-memory-paper">
+    <button class="btn-close-star" onclick="closeStarDirect()">×</button>
+    <div style="font-size:2rem;color:var(--antique-gold);margin-bottom:0.4rem;">✦</div>
+    <h3 class="star-mem-title" id="starTitle"></h3>
+    <p class="star-mem-date" id="starDate"></p>
+    <p class="star-mem-body" id="starBody"></p>
+  </div>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+<script>
+const starNodes = [
+  { x: 18, y: 26, name: "Sunflower Star", title: "The Sunflower Star", date: "First Promise Kept", story: "Pakhi, eta tomar deya amar first kono dream. Ekbar bolesila sunflower dite. Kothay kothay ami eta likhe rekhechilam. Ek jaigai erokom seta ami disilam. First dream which ami puron koresi." },
+  { x: 48, y: 18, name: "The Beginning", title: "Where Our Story Began", date: "The Spark", story: "The moment our eyes met and words found a rhythm. The universe seemed to quiet down just to let our story take breath." },
+  { x: 78, y: 32, name: "Dolonchapa Star", title: "A Day at TSC", date: "TSC & Dolonchapa", story: "TSC date and dolonchapa. Rickshaw diye ghura. Tomake dolonchapa kine disi. Tumi bolsila, puron koresi as an artist." },
+  { x: 30, y: 64, name: "Mehendi Star", title: "A Little Art of Yours", date: "Delicate Creativity", story: "Tomar ei shokh. The mehendi drawn on your hand. A quiet celebration of the artist living inside your gentle heart." },
+  { x: 64, y: 72, name: "The Boat Ride", title: "Somewhere on the Water", date: "Floating Free", story: "Noukae ghura amar shob favourite memory-r modhye ekta. Floating softly between the silver ripples and the sky." },
+  { x: 84, y: 80, name: "Someday Star", title: "A Dream for Someday", date: "Unwritten Future", story: "The rainy day at Shapla Bil, the blue saree, the quiet adventures that are still waiting for our footsteps." }
+];
+
+const container = document.getElementById('starChartContainer');
+const svgLines = document.getElementById('chartSvgLines');
+
+starNodes.forEach((node, idx) => {
+  const el = document.createElement('div');
+  el.className = 'universe-star-node';
+  el.style.left = node.x + '%';
+  el.style.top = node.y + '%';
+  el.innerHTML = `
+    <div class="universe-star-core"></div>
+    <span class="universe-star-label">${node.name}</span>
+  `;
+  el.addEventListener('click', () => openStar(idx));
+  container.appendChild(el);
+});
+
+// Draw Constellation Lines
+const links = [[0,1], [1,2], [0,3], [3,4], [4,5], [2,4]];
+function renderLines() {
+  const w = container.offsetWidth;
+  const h = container.offsetHeight;
+  svgLines.innerHTML = '';
+  links.forEach(([a, b]) => {
+    const na = starNodes[a];
+    const nb = starNodes[b];
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', (na.x / 100) * w);
+    line.setAttribute('y1', (na.y / 100) * h);
+    line.setAttribute('x2', (nb.x / 100) * w);
+    line.setAttribute('y2', (nb.y / 100) * h);
+    line.setAttribute('stroke', 'rgba(185, 154, 98, 0.35)');
+    line.setAttribute('stroke-width', '1.5');
+    line.setAttribute('stroke-dasharray', '3 3');
+    svgLines.appendChild(line);
+  });
+}
+
+setTimeout(renderLines, 100);
+window.addEventListener('resize', renderLines);
+
+function openStar(idx) {
+  const item = starNodes[idx];
+  document.getElementById('starTitle').textContent = item.title;
+  document.getElementById('starDate').textContent = item.date;
+  document.getElementById('starBody').textContent = item.story;
+  document.getElementById('starModal').classList.add('active');
+}
+
+function closeStarDirect() {
+  document.getElementById('starModal').classList.remove('active');
+}
+
+function closeStarOverlay(e) {
+  if (e.target.id === 'starModal') closeStarDirect();
+}
+</script>
+</body>
+</html>

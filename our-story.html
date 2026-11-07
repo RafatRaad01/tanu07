@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Story — The Vintage Cosmic Storybook</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Storybook Timeline Styling */
+.vintage-timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+.vintage-timeline::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--antique-gold), var(--dusty-burgundy), var(--antique-gold));
+  border-radius: 1px;
+}
+
+.timeline-entry-book {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+
+.timeline-entry-book::before {
+  content: '✦';
+  position: absolute;
+  left: -2rem;
+  top: 0px;
+  color: var(--antique-gold);
+  font-size: 1rem;
+  background: var(--antique-parchment);
+  line-height: 1;
+}
+
+.tl-entry-date {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--antique-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.tl-entry-title {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: 1.35rem;
+  color: var(--wine);
+  margin-bottom: 0.5rem;
+}
+
+.tl-entry-narrative {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-brown);
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<!-- Background Cosmic Canvas -->
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <!-- Celestial Navigation Bar -->
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()">
+        <span>📜</span> Chapters
+      </button>
+      <button class="btn-lock-book" onclick="lockStorybook()">
+        <span>🔒</span> Lock Book
+      </button>
+    </div>
+  </header>
+
+  <!-- Open Storybook Container -->
+  <main class="open-storybook floating" id="active-storybook">
+    <!-- Center Spine & Ribbon Bookmark -->
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <!-- Page Click Turn Zones -->
+    <a href="index.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="shokher-corner.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: Chapter Introduction -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter II</span>
+        <span>Chronicles</span>
+      </div>
+
+      <span class="chapter-numeral">Chronicle One</span>
+      <h1 class="chapter-heading">Our Story</h1>
+      <p class="chapter-subheading">"Every love story is written in the quiet moments before the world notices."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <!-- Illustrated Opening Photograph -->
+      <div class="antique-photo-frame antique-photo-corners">
+        <img src="public/assets/images/gallery/memory1.jpg" alt="Our Story Portrait" loading="lazy"/>
+        <p class="antique-photo-caption">"Where every tomorrow began with a single hello."</p>
+      </div>
+
+      <div class="storybook-prose storybook-dropcap" style="margin-top:1.5rem;">
+        <p>
+          Some stories do not begin with grand celebrations or sudden declarations. They unfold quietly, like constellations emerging one by one in the evening twilight.
+        </p>
+        <p>
+          This is the record of our days—the laughter, the quiet walks, the little dreams that found a home between two souls. Turn through the pages to remember how we began.
+        </p>
+      </div>
+
+      <div class="page-number-footer">Page 02</div>
+    </section>
+
+    <!-- RIGHT PAGE: Illustrated Timeline -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>The Journey</span>
+        <span>Memories</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.4rem;color:var(--wine);margin-bottom:0.8rem;text-align:center;">
+        Timeline of Moments
+      </h2>
+
+      <div class="vintage-timeline">
+        <!-- Entry 1 -->
+        <div class="timeline-entry-book">
+          <p class="tl-entry-date">The Beginning · First Chapter</p>
+          <h3 class="tl-entry-title">How It All Started</h3>
+          <p class="tl-entry-narrative">
+            The very first day our paths crossed. The shy smiles, the careful words, and the sudden warmth of realizing someone understands you without an explanation.
+          </p>
+        </div>
+
+        <!-- Entry 2 -->
+        <div class="timeline-entry-book">
+          <p class="tl-entry-date">Early Whispers · Little Moments</p>
+          <h3 class="tl-entry-title">First Little Moments</h3>
+          <p class="tl-entry-narrative">
+            Late-night talks that felt like minutes, discovering the little habits, the quirks, and the things that make your smile light up the universe.
+          </p>
+        </div>
+
+        <!-- Entry 3 -->
+        <div class="timeline-entry-book">
+          <p class="tl-entry-date">A Sunflower's Promise</p>
+          <h3 class="tl-entry-title">The Wishes I Remembered</h3>
+          <p class="tl-entry-narrative">
+            You whispered that you loved sunflowers and dolonchapa. I made a quiet vow to write down every wish in my heart and bring them to life, one petal at a time.
+          </p>
+        </div>
+
+        <!-- Entry 4 -->
+        <div class="timeline-entry-book">
+          <p class="tl-entry-date">TSC &amp; Rickshaw Rides</p>
+          <h3 class="tl-entry-title">Our Favourite Dates</h3>
+          <p class="tl-entry-narrative">
+            Walking near TSC with the scent of flowers in the air, the gentle sway of the rickshaw, and floating together on the quiet river waters.
+          </p>
+        </div>
+
+        <!-- Entry 5 -->
+        <div class="timeline-entry-book">
+          <p class="tl-entry-date">Still Being Written</p>
+          <h3 class="tl-entry-title">The Dreams Ahead</h3>
+          <p class="tl-entry-narrative">
+            This storybook is far from complete. There are still rainy days to share, journeys to take, and a lifetime of little dreams waiting to unfold.
+          </p>
+        </div>
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:1.5rem;">
+        "With every page, I fall in love with you all over again."
+      </p>
+
+      <div class="page-number-footer">Page 03</div>
+    </section>
+  </main>
+
+  <!-- Bottom Page Navigation Controls -->
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="index.html" class="btn-book-nav btn-prev">
+      <span>‹</span> Cover Page
+    </a>
+    <span class="book-current-indicator">Chapter II · Page 2-3</span>
+    <a href="shokher-corner.html" class="btn-book-nav btn-next">
+      Shokher Corner <span>›</span>
+    </a>
+  </nav>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'">
+        <span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning — Home</span>
+        <span class="toc-page-num">Cover</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'">
+        <span class="toc-chapter-name"><span class="toc-num">02</span> Our Story — Timeline</span>
+        <span class="toc-page-num">p. 2</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'">
+        <span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner — Her Wishes</span>
+        <span class="toc-page-num">p. 4</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'">
+        <span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault — Photo Journal</span>
+        <span class="toc-page-num">p. 6</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='letters.html'">
+        <span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span>
+        <span class="toc-page-num">p. 8</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'">
+        <span class="toc-chapter-name"><span class="toc-num">06</span> Open When... Sealed Notes</span>
+        <span class="toc-page-num">p. 10</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'">
+        <span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span>
+        <span class="toc-page-num">p. 12</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'">
+        <span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe — Constellations</span>
+        <span class="toc-page-num">p. 14</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='someday.html'">
+        <span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together — Bucket List</span>
+        <span class="toc-page-num">p. 16</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'">
+        <span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack — Melody &amp; Lyrics</span>
+        <span class="toc-page-num">p. 18</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'">
+        <span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span>
+        <span class="toc-page-num">p. 20</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'">
+        <span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room — The Hidden Key</span>
+        <span class="toc-page-num">p. 22</span>
+      </li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'">
+        <span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave — Final Inscription</span>
+        <span class="toc-page-num">p. 24</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+</body>
+</html>

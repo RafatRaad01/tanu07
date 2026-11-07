@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reasons I Love You — A Hundred Little Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Reasons Interactive Display in Storybook */
+.reason-card-showcase {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--antique-gold);
+  border-radius: 6px;
+  padding: 2.2rem 1.8rem;
+  margin-top: 1.2rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(68, 52, 38, 0.08);
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reason-counter-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.8rem;
+  color: var(--antique-gold);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.reason-active-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--wine);
+  line-height: 1.6;
+  margin: 0.8rem 0;
+  animation: reasonSwap 0.4s ease forwards;
+}
+
+@keyframes reasonSwap {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reasons-nav-buttons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+/* Mini Notes Grid on Right Page */
+.mini-reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 0.3rem;
+}
+
+.mini-reason-card {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(185, 154, 98, 0.35);
+  border-radius: 3px;
+  padding: 0.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-brown);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.mini-reason-card:hover {
+  background: #ffffff;
+  border-color: var(--dusty-burgundy);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(185, 154, 98, 0.2);
+}
+
+.mini-reason-idx {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.75rem;
+  color: var(--antique-gold);
+  margin-bottom: 0.2rem;
+  display: block;
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()"><span>📜</span> Chapters</button>
+      <button class="btn-lock-book" onclick="lockStorybook()"><span>🔒</span> Lock Book</button>
+    </div>
+  </header>
+
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="soundtrack.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="secret-room.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: Interactive Showcase -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter XI</span>
+        <span>A Thousand Devotions</span>
+      </div>
+
+      <span class="chapter-numeral">Invocations of Love</span>
+      <h1 class="chapter-heading">Reasons I Love You</h1>
+      <p class="chapter-subheading">"I could keep writing until the stars burn out, and still have more to say."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <div class="reason-card-showcase">
+        <span class="reason-counter-num" id="reasonNum">01</span>
+        <p class="reason-active-text" id="reasonMainText">
+          "Because you remember the little things and hold onto them with pure gentleness."
+        </p>
+      </div>
+
+      <div class="reasons-nav-buttons" style="justify-content:center;">
+        <button class="btn-book-nav" style="padding:0.45rem 1rem;font-size:0.75rem;" onclick="prevReason()">
+          <span>‹</span> Previous
+        </button>
+        <button class="btn-book-nav" style="padding:0.45rem 1rem;font-size:0.75rem;" onclick="nextReason()">
+          Next Reason <span>›</span>
+        </button>
+      </div>
+
+      <div class="page-number-footer">Page 20</div>
+    </section>
+
+    <!-- RIGHT PAGE: Inscribed Grid of Reasons -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Inscribed Reasons</span>
+        <span>The List</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.35rem;color:var(--wine);margin-bottom:0.4rem;text-align:center;">
+        Inscribed Upon Parchment
+      </h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;text-align:center;color:var(--dusty-burgundy);font-size:0.95rem;margin-bottom:1rem;">
+        Click any note to display it in the main showcase.
+      </p>
+
+      <div class="mini-reasons-grid" id="miniReasonsGrid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:1.4rem;">
+        "Every single reason leads back to the very same truth: you are my home."
+      </p>
+
+      <div class="page-number-footer">Page 21</div>
+    </section>
+  </main>
+
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="soundtrack.html" class="btn-book-nav btn-prev"><span>‹</span> Our Soundtrack</a>
+    <span class="book-current-indicator">Chapter XI · Page 20-21</span>
+    <a href="secret-room.html" class="btn-book-nav btn-next">✦ Secret Room <span>›</span></a>
+  </nav>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+<script>
+const reasonsList = [
+  "Because you remember the little things and hold onto them with pure gentleness.",
+  "Because you wished for a sunflower, and that little dream became my first promise.",
+  "Because the mehendi on your hands proves your delicate appreciation for art.",
+  "Because of our TSC date, the rickshaw ride, and the dolonchapa you held so dearly.",
+  "Because floating on the wooden boat with you is one of my happiest memories.",
+  "Because you have an entire constellation of sweet, innocent wishes.",
+  "Because you love flowers—sunflowers, dolonchapa, kadam, beli, and orchids.",
+  "Because rain brings a gentle light to your eyes and dreams to your heart.",
+  "Because you are artistic in ways that make ordinary moments feel like poetry.",
+  "Because hearing your laughter can silence any worry in my mind.",
+  "Because you have a rare, honest heart that loves deeply without pretense.",
+  "Because out of every soul in this vast universe, you are my favorite person."
+];
+
+let curReasonIdx = 0;
+
+function displayReason(idx) {
+  curReasonIdx = idx;
+  const numEl = document.getElementById('reasonNum');
+  const textEl = document.getElementById('reasonMainText');
+
+  textEl.style.animation = 'none';
+  void textEl.offsetWidth;
+  textEl.style.animation = 'reasonSwap 0.4s ease forwards';
+
+  numEl.textContent = String(idx + 1).padStart(2, '0');
+  textEl.textContent = `"${reasonsList[idx]}"`;
+}
+
+function nextReason() {
+  curReasonIdx = (curReasonIdx + 1) % reasonsList.length;
+  displayReason(curReasonIdx);
+}
+
+function prevReason() {
+  curReasonIdx = (curReasonIdx - 1 + reasonsList.length) % reasonsList.length;
+  displayReason(curReasonIdx);
+}
+
+function initGrid() {
+  const grid = document.getElementById('miniReasonsGrid');
+  reasonsList.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'mini-reason-card';
+    card.innerHTML = `<span class="mini-reason-idx">Reason ${String(i+1).padStart(2, '0')}</span>${r}`;
+    card.addEventListener('click', () => displayReason(i));
+    grid.appendChild(card);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  displayReason(0);
+  initGrid();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Letters to You — Handwritten Inscriptions</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Letters Inset Cards */
+.letter-parchment-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.letter-entry-seal {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--antique-gold);
+  border-radius: 4px;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 4px 15px rgba(68, 52, 38, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.letter-entry-seal:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(185, 154, 98, 0.25);
+  border-color: var(--dusty-burgundy);
+}
+
+.letter-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.letter-entry-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2rem;
+  color: var(--wine);
+}
+
+.wax-seal-icon {
+  width: 26px;
+  height: 26px;
+  background: #8b1e2c;
+  border-radius: 50%;
+  color: #ffdf88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.letter-entry-preview {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-faded);
+  line-height: 1.5;
+}
+
+/* Modal for reading full letter */
+.letter-reading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 14, 27, 0.9);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.letter-reading-overlay.active {
+  display: flex;
+}
+
+.letter-full-paper {
+  background: #fdf6ec;
+  max-width: 620px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 3rem 2.5rem;
+  border: 2px solid var(--antique-gold);
+  border-radius: 6px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(185, 154, 98, 0.15);
+  position: relative;
+}
+
+.btn-close-letter {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--ink-brown);
+  cursor: pointer;
+}
+
+.full-letter-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.7rem;
+  color: var(--wine);
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.full-letter-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--antique-gold);
+  text-align: center;
+  margin-bottom: 1.8rem;
+  border-bottom: 1px dashed rgba(185, 154, 98, 0.5);
+  padding-bottom: 0.8rem;
+}
+
+.full-letter-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--ink-brown);
+  white-space: pre-line;
+}
+
+.full-letter-sign {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  color: var(--dusty-burgundy);
+  text-align: right;
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()"><span>📜</span> Chapters</button>
+      <button class="btn-lock-book" onclick="lockStorybook()"><span>🔒</span> Lock Book</button>
+    </div>
+  </header>
+
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="memory-vault.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="open-when.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: Letters 1 - 3 -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter V</span>
+        <span>Epistles of the Heart</span>
+      </div>
+
+      <span class="chapter-numeral">Wax &amp; Parchment</span>
+      <h1 class="chapter-heading">Letters to You</h1>
+      <p class="chapter-subheading">"Some feelings deserve more than a passing whisper."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <div class="letter-parchment-cards">
+        <!-- Letter 1 -->
+        <div class="letter-entry-seal" onclick="readLetter(0)">
+          <div class="letter-entry-header">
+            <h3 class="letter-entry-title">A Letter for You</h3>
+            <span class="wax-seal-icon">✦</span>
+          </div>
+          <p class="letter-entry-preview">"প্রিয় পাখি, তুমি জানো না তুমি আমার জন্য কি... এই জীবনে তোমাকে আমি এতো ভালোবাসি যে কখনো বুঝাতে পারবো না..."</p>
+        </div>
+
+        <!-- Letter 2 -->
+        <div class="letter-entry-seal" onclick="readLetter(1)">
+          <div class="letter-entry-header">
+            <h3 class="letter-entry-title">When I Miss You</h3>
+            <span class="wax-seal-icon">✦</span>
+          </div>
+          <p class="letter-entry-preview">"মাঝে মাঝে খুব ইচ্ছা করে তোমার বুকে জড়িয়ে থাকতে... যখন খুব মিস করি তখন আমাদের পুরোনো স্মৃতিগুলো দেখি..."</p>
+        </div>
+
+        <!-- Letter 3 -->
+        <div class="letter-entry-seal" onclick="readLetter(2)">
+          <div class="letter-entry-header">
+            <h3 class="letter-entry-title">Things I Never Said</h3>
+            <span class="wax-seal-icon">✦</span>
+          </div>
+          <p class="letter-entry-preview">"Some words take time to find their voice. But they have always been true..."</p>
+        </div>
+      </div>
+
+      <div class="page-number-footer">Page 08</div>
+    </section>
+
+    <!-- RIGHT PAGE: Letters 4 - 6 -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Folded Sentiments</span>
+        <span>Part II</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.4rem;color:var(--wine);margin-bottom:0.4rem;text-align:center;">
+        Written Under the Stars
+      </h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;text-align:center;color:var(--dusty-burgundy);font-size:0.95rem;margin-bottom:1.2rem;">
+        Click any folded letter to read its message.
+      </p>
+
+      <div class="letter-parchment-cards">
+        <!-- Letter 4 -->
+        <div class="letter-entry-seal" onclick="readLetter(3)">
+          <div class="letter-entry-header">
+            <h3 class="letter-entry-title">A Little Thank You</h3>
+            <span class="wax-seal-icon">✦</span>
+          </div>
+          <p class="letter-entry-preview">"Thank you for being my sanctuary, my favorite smile, and my gentle companion..."</p>
+        </div>
+
+        <!-- Letter 5 -->
+        <div class="letter-entry-seal" onclick="readLetter(4)">
+          <div class="letter-entry-header">
+            <h3 class="letter-entry-title">My Favourite Person</h3>
+            <span class="wax-seal-icon">✦</span>
+          </div>
+          <p class="letter-entry-preview">"আমার জীবনে সবচেয়ে বেস্ট আর সবচেয়ে কাছের মানুষটা তুমি... ভালোবাসি, হাতটা ধরে রেখো..."</p>
+        </div>
+
+        <!-- Letter 6 -->
+        <div class="letter-entry-seal" onclick="readLetter(5)">
+          <div class="letter-entry-header">
+            <h3 class="letter-entry-title">A Letter for the Future</h3>
+            <span class="wax-seal-icon">✦</span>
+          </div>
+          <p class="letter-entry-preview">"Years from now, when we look back upon these words, may our love be even deeper..."</p>
+        </div>
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:2rem;">
+        "These words are etched into parchment, but they live forever in my heart."
+      </p>
+
+      <div class="page-number-footer">Page 09</div>
+    </section>
+  </main>
+
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="memory-vault.html" class="btn-book-nav btn-prev"><span>‹</span> Memory Vault</a>
+    <span class="book-current-indicator">Chapter V · Page 8-9</span>
+    <a href="open-when.html" class="btn-book-nav btn-next">Open When... <span>›</span></a>
+  </nav>
+</div>
+
+<!-- Modal For Reading Full Letter -->
+<div class="letter-reading-overlay" id="letterModal" onclick="closeLetterOverlay(event)">
+  <div class="letter-full-paper">
+    <button class="btn-close-letter" onclick="closeLetterDirect()">×</button>
+    <h2 class="full-letter-title" id="letterTitle"></h2>
+    <p class="full-letter-date" id="letterDate"></p>
+    <div class="full-letter-body" id="letterBody"></div>
+    <p class="full-letter-sign" id="letterSign">— Yours always, with all my love</p>
+  </div>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+<script>
+const lettersData = [
+  {
+    title: "A Letter for You",
+    date: "আমার প্রিয় পাখির জন্য",
+    body: "প্রিয় পাখি,\n\nতুমি সত্যি জানো না তুমি আমার জন্য ঠিক কি। এই জীবনে তোমাকে আমি যে কতটা ভালোবাসি, তা হয়তো কোনো শব্দ বা ভাষা দিয়ে কখনো বুঝিয়ে শেষ করতে পারবো না।\n\nআমি জানি আমার অনেক ভুলত্রুটি আছে, আমি পারফেক্ট কেউ নই। সবসময় তোমার মনের মতো পারফেক্ট হওয়ার চেষ্টা করি, কিন্তু হয়তো সব সময় পারি না। জানি অনেক সময় অবুঝের মতো পাগলামি করে ফেলি, যাতে তুমি বিরক্তও হতে পারো...\n\nআমার সব ভুল আর পাগলামির জন্য সত্যিই মন থেকে সরি পাখি।\n\nসারাজীবন শুধু তোমার ভালোবাসাটাই আমার সম্বল।",
+    sign: "— ইতি, তোমার বাচ্চা"
+  },
+  {
+    title: "When I Miss You",
+    date: "যখন দূরত্বের মাঝে একাকী লাগে",
+    body: "পাখি,\n\nমাঝে মাঝে যখন তোমাকে খুব মিস করি, তখন মনটা কেমন জানি ব্যাকুল হয়ে ওঠে... খুব ইচ্ছে করে তোমার বুকে পরম শান্তিতে জড়িয়ে থাকতে।\n\nতখন মনকে শান্ত করতে আমাদের পুরোনো স্মৃতিগুলো, ছবিগুলো আর মেসেজগুলো বারবার ঘাটি। যতবার দেখি, এক অদ্ভুত ভালোলাগা মনটাকে ছুঁয়ে যায়।\n\nদূরত্ব হয়তো আমাদের মাঝে আছে, কিন্তু আমার প্রতিটি ভাবনায় প্রতি মুহূর্তে শুধু তুমিই থাকো।",
+    sign: "— দূর থেকে ভালোবাসায়, তোমার বাচ্চা"
+  },
+  {
+    title: "Things I Never Said",
+    date: "Treasured confessions",
+    body: "Some words take time to find their voice. But they have always been true.\n\nYou make me want to be better, kinder, and more attentive to every beauty in this world.\n\nYou turned ordinary days into moments worth writing into an ancient storybook.",
+    sign: "— Always yours"
+  },
+  {
+    title: "A Little Thank You",
+    date: "With sincere gratitude",
+    body: "Thank you for the sunflower wish that became my first little promise.\n\nThank you for the TSC memories and the dolonchapa moments.\n\nThank you for the boat ride that became one of my favourite memories.\n\nThank you for simply being you.",
+    sign: "— Gratefully yours"
+  },
+  {
+    title: "My Favourite Person",
+    date: "আমার সবচেয়ে প্রিয় মানুষের জন্য",
+    body: "আমার পাখি,\n\nআমার এই পুরো জীবনে সবচেয়ে বেস্ট, সবচেয়ে স্পেশাল এবং সবচেয়ে কাছের মানুষটা শুধুই তুমি।\n\nআমি তোমাকে কতটা ভালোবাসি তা কোনো পরিমাপে মাপা যাবে না। শুধু এতটুকুই জানি—আমি তোমার ছিলাম, আছি এবং জীবনের শেষ নিঃশ্বাস পর্যন্ত সবসময় তোমারই থাকবো।\n\nজীবনের প্রতিটি পদক্ষেপে শুধু আমার হাতটা শক্ত করে ধরে রেখো, বাকি পথটা আমি তোমার সাথে পার করে দেবো... 🫠❤️",
+    sign: "— সারাজীবন তোমার হাত ধরে রাখা একজন"
+  },
+  {
+    title: "A Letter for the Future",
+    date: "For tomorrow and beyond",
+    body: "I am writing this from a moment in the present, hoping you read it in a future that is even more beautiful.\n\nI hope by then, we have made more memories. I hope by then, more little wishes have been fulfilled.\n\nOur story is still being written. And I am excited for every new chapter.",
+    sign: "— Looking toward tomorrow"
+  }
+];
+
+function readLetter(idx) {
+  const item = lettersData[idx];
+  document.getElementById('letterTitle').textContent = item.title;
+  document.getElementById('letterDate').textContent = item.date;
+  document.getElementById('letterBody').textContent = item.body;
+  document.getElementById('letterSign').textContent = item.sign || "— Yours always, with all my love";
+  document.getElementById('letterModal').classList.add('active');
+}
+
+function closeLetterDirect() {
+  document.getElementById('letterModal').classList.remove('active');
+}
+
+function closeLetterOverlay(e) {
+  if (e.target.id === 'letterModal') closeLetterDirect();
+}
+</script>
+</body>
+</html>

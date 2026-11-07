@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Story – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.85rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+.page-hero{background:linear-gradient(135deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.page-hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.04;pointer-events:none;}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+
+.timeline-wrap{max-width:900px;margin:5rem auto;padding:0 1.5rem 5rem;}
+.timeline{position:relative;padding-left:3rem;}
+.timeline::before{content:'';position:absolute;left:1rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);}
+.tl-item{position:relative;margin-bottom:4rem;opacity:0;transform:translateX(-20px);animation:slideIn .6s ease forwards;}
+@keyframes slideIn{to{opacity:1;transform:translateX(0);}}
+.tl-item:nth-child(1){animation-delay:.1s;}
+.tl-item:nth-child(2){animation-delay:.25s;}
+.tl-item:nth-child(3){animation-delay:.4s;}
+.tl-item:nth-child(4){animation-delay:.55s;}
+.tl-item:nth-child(5){animation-delay:.7s;}
+.tl-item:nth-child(6){animation-delay:.85s;}
+.tl-dot{position:absolute;left:-2.3rem;top:.4rem;width:12px;height:12px;background:var(--gold);border-radius:50%;border:2px solid var(--ivory);box-shadow:0 0 0 3px rgba(197,161,109,.3);}
+.tl-date{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.tl-title{font-size:1.8rem;color:var(--burgundy);margin-bottom:.8rem;}
+.tl-text{font-size:.95rem;line-height:1.8;color:var(--wine);margin-bottom:1rem;}
+.tl-img{width:100%;max-height:300px;object-fit:cover;margin-top:1rem;box-shadow:0 8px 30px rgba(45,16,29,.12);}
+.tl-caption{font-family:'Dancing Script',cursive;font-size:.95rem;color:var(--rose);margin-top:.5rem;text-align:right;}
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html" class="active">Our Story</a></li>
+      <li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li>
+      <li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li>
+      <li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li>
+      <li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li>
+      <li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <p class="page-label">Chapter One</p>
+  <h1 class="page-title">Our Story</h1>
+  <p class="page-sub">Every love story has a beginning. Ours has many little chapters.</p>
+</div>
+
+<div class="timeline-wrap">
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">The Beginning</p>
+      <h2 class="tl-title">How It All Started</h2>
+      <p class="tl-text">[Edit this — write how you two first met, what the first moment felt like, what you noticed about her.]</p>
+      <p class="tl-caption">— The first chapter of everything</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">Early Days</p>
+      <h2 class="tl-title">The First Little Moments</h2>
+      <p class="tl-text">[Edit this — the first conversations, the first little things you noticed, the moments that made you smile.]</p>
+      <img src="public/assets/images/gallery/memory1.jpg" alt="Early Days" loading="lazy" class="tl-img"/>
+      <p class="tl-caption">— Little moments that became everything</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">I Remember</p>
+      <h2 class="tl-title">The Wishes I Remembered</h2>
+      <p class="tl-text">She told me little things she wanted — a sunflower, dolonchapa flowers, a boat ride, a TSC date. I wrote them down in my heart. One by one, I tried to make them real.</p>
+      <img src="public/assets/images/wishlist/sunflower.jpg" alt="Sunflower memory" loading="lazy" class="tl-img"/>
+      <p class="tl-caption">— The first little dream I fulfilled</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">Our Dates</p>
+      <h2 class="tl-title">Our Favourite Dates</h2>
+      <p class="tl-text">TSC in the rain. Rickshaw rides. Dolonchapa in hand. These are among my favourite days with you.</p>
+      <img src="public/assets/images/wishlist/tsc-dolonchapa.jpg" alt="TSC date" loading="lazy" class="tl-img"/>
+      <p class="tl-caption">— A day at TSC I wish I could relive</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">On the Water</p>
+      <h2 class="tl-title">The Memories I Keep</h2>
+      <p class="tl-text">Noukae ghura amar shob favourite memory-r modhye ekta. Floating somewhere between the moment and forever — that is what it felt like.</p>
+      <img src="public/assets/images/wishlist/boat-ride.jpg" alt="Boat ride" loading="lazy" class="tl-img"/>
+      <p class="tl-caption">— Somewhere on the water</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-date">Still Writing</p>
+      <h2 class="tl-title">The Dreams Ahead</h2>
+      <p class="tl-text">[Edit this — the things you still want to do together, the future chapters you are looking forward to writing with her.]</p>
+      <p class="tl-caption">— Our story is still being written</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Shokher Corner &nbsp;·&nbsp; Made with love, just for you.</p>
+</footer>
+<script>
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+</script>
+</body>
+</html>

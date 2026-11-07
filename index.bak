@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shokher Corner – A Little World of You & Me</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;
+  --rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+.handwritten{font-family:'Dancing Script',cursive;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;letter-spacing:1px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.85rem;letter-spacing:.5px;transition:color .3s;}
+.nav-links a:hover{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);transition:.3s;}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);font-size:.9rem;}
+.mobile-nav a:hover{background:var(--cream);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('public/assets/images/hero/hero-cover.jpg');background-size:cover;background-position:center;transform:scale(1.05);animation:heroZoom 20s ease-in-out infinite alternate;}
+@keyframes heroZoom{from{transform:scale(1.05);}to{transform:scale(1.12);}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(45,16,29,0.85) 0%,rgba(74,23,41,0.75) 100%);}
+.hero-grain{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");pointer-events:none;}
+.hero-content{position:relative;text-align:center;color:var(--ivory);padding:2rem;max-width:700px;animation:fadeUp 1.5s ease forwards;opacity:0;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}from{opacity:0;transform:translateY(30px);}}
+.hero-label{font-size:.8rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;animation:fadeUp 1.5s ease .3s forwards;opacity:0;}
+.hero-title{font-size:clamp(2.5rem,7vw,5rem);font-weight:600;line-height:1.1;margin-bottom:1.2rem;animation:fadeUp 1.5s ease .5s forwards;opacity:0;}
+.hero-subtitle{font-size:1.1rem;color:var(--blush);margin-bottom:.8rem;font-style:italic;animation:fadeUp 1.5s ease .7s forwards;opacity:0;}
+.hero-tagline{font-size:.9rem;color:rgba(248,241,232,.7);margin-bottom:2.5rem;animation:fadeUp 1.5s ease .9s forwards;opacity:0;}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--wine);padding:.9rem 2.5rem;text-decoration:none;font-size:.9rem;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:.4s;animation:fadeUp 1.5s ease 1.1s forwards;opacity:0;}
+.btn-primary:hover{background:var(--ivory);transform:translateY(-2px);}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(248,241,232,.5);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;animation:bounce 2s infinite 2s;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-8px);}}
+
+/* CHAPTERS */
+.chapters{padding:5rem 1.5rem;background:var(--cream);}
+.section-label{text-align:center;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.section-title{text-align:center;font-size:2.5rem;color:var(--burgundy);margin-bottom:.5rem;}
+.section-sub{text-align:center;color:var(--rose);font-style:italic;margin-bottom:3.5rem;}
+.grid-cards{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+.card{background:var(--ivory);overflow:hidden;box-shadow:0 4px 20px rgba(45,16,29,.08);transition:.4s;cursor:pointer;}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(45,16,29,.15);}
+.card img{width:100%;height:220px;object-fit:cover;transition:.4s;}
+.card:hover img{transform:scale(1.05);}
+.card-body{padding:1.5rem;}
+.card-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.card-title{font-size:1.4rem;color:var(--burgundy);margin-bottom:.5rem;}
+.card-desc{font-size:.85rem;color:var(--wine);line-height:1.6;}
+.card-link{display:inline-block;margin-top:1rem;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--burgundy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px;transition:.3s;}
+.card-link:hover{color:var(--gold);}
+
+/* QUOTE */
+.quote-section{padding:5rem 2rem;background:var(--burgundy);text-align:center;}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.2rem);color:var(--ivory);font-style:italic;max-width:700px;margin:auto;line-height:1.6;}
+.quote-attr{margin-top:1.5rem;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+
+/* FOOTER */
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;letter-spacing:1px;}
+footer span{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li>
+      <li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li>
+      <li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li>
+      <li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li>
+      <li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="our-story.html">Our Story</a>
+    <a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a>
+    <a href="letters.html">Letters to You</a>
+    <a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a>
+    <a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a>
+    <a href="soundtrack.html">Soundtrack</a>
+    <a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <p class="hero-label">A little world, made just for you</p>
+    <h1 class="hero-title">A Little World<br/>of You &amp; Me</h1>
+    <p class="hero-subtitle">Some stories are too beautiful to stay inside memories.</p>
+    <p class="hero-tagline">Every little moment has a place here.</p>
+    <a href="our-story.html" class="btn-primary">Enter Our Story</a>
+  </div>
+  <p class="scroll-hint">scroll</p>
+</section>
+
+<section class="chapters">
+  <p class="section-label">Chapters</p>
+  <h2 class="section-title">Our Little Universe</h2>
+  <p class="section-sub">Explore every corner of this world I made for you.</p>
+  <div class="grid-cards">
+    <a href="our-story.html" class="card" style="text-decoration:none;">
+      <img src="public/assets/images/gallery/memory1.jpg" alt="Our Story" loading="lazy"/>
+      <div class="card-body">
+        <p class="card-tag">Chapter 01</p>
+        <h3 class="card-title">Our Story</h3>
+        <p class="card-desc">The journey that started it all — every beginning, every little moment.</p>
+        <span class="card-link">Read the Story →</span>
+      </div>
+    </a>
+    <a href="shokher-corner.html" class="card" style="text-decoration:none;">
+      <img src="public/assets/images/wishlist/sunflower.jpg" alt="Shokher Corner" loading="lazy"/>
+      <div class="card-body">
+        <p class="card-tag">Chapter 02</p>
+        <h3 class="card-title">Shokher Corner</h3>
+        <p class="card-desc">Your little wishes, your little dreams — I remembered every single one.</p>
+        <span class="card-link">Explore Wishes →</span>
+      </div>
+    </a>
+    <a href="memory-vault.html" class="card" style="text-decoration:none;">
+      <img src="public/assets/images/gallery/memory3.jpg" alt="Memory Vault" loading="lazy"/>
+      <div class="card-body">
+        <p class="card-tag">Chapter 03</p>
+        <h3 class="card-title">Memory Vault</h3>
+        <p class="card-desc">Our private gallery — moments I never want to forget.</p>
+        <span class="card-link">Open the Vault →</span>
+      </div>
+    </a>
+    <a href="letters.html" class="card" style="text-decoration:none;">
+      <img src="public/assets/images/gallery/memory2.jpg" alt="Letters" loading="lazy"/>
+      <div class="card-body">
+        <p class="card-tag">Chapter 04</p>
+        <h3 class="card-title">Letters to You</h3>
+        <p class="card-desc">Some feelings deserve more than a message. Words, written just for you.</p>
+        <span class="card-link">Read the Letters →</span>
+      </div>
+    </a>
+    <a href="our-universe.html" class="card" style="text-decoration:none;">
+      <img src="public/assets/images/gallery/memory5.jpg" alt="Our Universe" loading="lazy"/>
+      <div class="card-body">
+        <p class="card-tag">Chapter 05</p>
+        <h3 class="card-title">Our Little Universe</h3>
+        <p class="card-desc">Some moments deserve their own stars. Each one glows just for us.</p>
+        <span class="card-link">Explore the Stars →</span>
+      </div>
+    </a>
+    <a href="secret-room.html" class="card" style="text-decoration:none;">
+      <img src="public/assets/images/gallery/memory4.jpg" alt="Secret Room" loading="lazy"/>
+      <div class="card-body">
+        <p class="card-tag">✦ Hidden</p>
+        <h3 class="card-title">Secret Room</h3>
+        <p class="card-desc">A hidden corner made only for you. Only you know how to unlock it.</p>
+        <span class="card-link">Find the Secret →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="quote-section">
+  <p class="quote-text">"I remember the little things about you — and the little things are everything."</p>
+  <p class="quote-attr">— Made with love, just for you</p>
+</section>
+
+<footer>
+  <p>Shokher Corner &nbsp;·&nbsp; Made with <span>♡</span> just for you &nbsp;·&nbsp; <span>Pakhi</span></p>
+</footer>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('mobileNav');
+  btn.addEventListener('click',()=>nav.classList.toggle('open'));
+</script>
+</body>
+</html>

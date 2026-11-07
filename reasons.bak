@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reasons I Love You – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.page-hero{background:linear-gradient(160deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+.reasons-wrap{max-width:800px;margin:5rem auto;padding:0 1.5rem 2rem;text-align:center;}
+.counter{font-family:'Cormorant Garamond',serif;font-size:5rem;color:var(--gold);line-height:1;margin-bottom:.5rem;}
+.counter-label{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-bottom:3rem;}
+.reason-display{min-height:160px;display:flex;align-items:center;justify-content:center;padding:3rem 2rem;background:var(--cream);border-left:4px solid var(--gold);margin-bottom:2rem;position:relative;}
+.reason-text{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--burgundy);font-style:italic;line-height:1.5;animation:fadeSwap .4s ease;}
+@keyframes fadeSwap{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.reason-nav{display:flex;gap:1rem;justify-content:center;margin-bottom:3rem;}
+.btn-nav{background:none;border:1px solid var(--burgundy);color:var(--burgundy);padding:.7rem 2rem;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.3s;}
+.btn-nav:hover{background:var(--burgundy);color:var(--ivory);}
+.reasons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:3rem;}
+.reason-card{background:var(--cream);padding:1.2rem;font-size:.88rem;line-height:1.65;color:var(--wine);border-top:2px solid var(--blush);}
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li><li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li><li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li><li><a href="reasons.html" class="active">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<div class="page-hero">
+  <p class="page-label">Chapter Ten</p>
+  <h1 class="page-title">A Hundred Little Reasons</h1>
+  <p class="page-sub">I could keep writing, but I would still have more to say.</p>
+</div>
+<div class="reasons-wrap">
+  <p class="counter" id="counter">01</p>
+  <p class="counter-label">of many reasons</p>
+  <div class="reason-display"><p class="reason-text" id="reasonText"></p></div>
+  <div class="reason-nav">
+    <button class="btn-nav" onclick="prevR()">← Previous</button>
+    <button class="btn-nav" onclick="nextR()">Next →</button>
+  </div>
+  <div class="reasons-grid" id="reasonsGrid"></div>
+</div>
+<footer><p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Reasons &nbsp;·&nbsp; Shokher Corner</p></footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+const reasons=[
+  'Because you remember little things and care about them deeply.',
+  'Because you wished for a sunflower, and that wish became my first little promise.',
+  'Because of the mehendi on your hand and what it says about how you see the world.',
+  'Because of the TSC date, the rickshaw ride, and the dolonchapa you held.',
+  'Because of the boat ride that became one of my favourite memories.',
+  'Because you have a whole list of beautiful little wishes.',
+  'Because you appreciate flowers — dolonchapa, sunflowers, beli, kadam, orchids.',
+  'Because rain makes you want to go somewhere beautiful.',
+  'Because you are artistic in ways that make ordinary things feel special.',
+  '[Edit this — add your personal reason 10.]',
+  '[Edit this — add your personal reason 11.]',
+  '[Edit this — add your personal reason 12.]',
+  '[Edit this — keep writing. I would still have more to say.]',
+];
+let cur=0;
+const rt=document.getElementById('reasonText');
+const rc=document.getElementById('counter');
+const grid=document.getElementById('reasonsGrid');
+function show(){
+  rt.style.animation='none';rt.offsetHeight;rt.style.animation='';
+  rt.textContent=reasons[cur];
+  rc.textContent=String(cur+1).padStart(2,'0');
+}
+function nextR(){cur=(cur+1)%reasons.length;show();}
+function prevR(){cur=(cur-1+reasons.length)%reasons.length;show();}
+reasons.forEach((r,i)=>{const c=document.createElement('div');c.className='reason-card';c.textContent=(i+1)+'. '+r;grid.appendChild(c);});
+show();
+</script>
+</body>
+</html>

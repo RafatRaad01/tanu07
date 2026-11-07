@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shokher Corner — Her Wishes &amp; Dreams</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="public/assets/css/storybook.css"/>
+<style>
+/* Wishlist Storybook Grid & Cards */
+.wishes-storybook-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.wish-scroll-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.8rem;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(185, 154, 98, 0.35);
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+.wish-scroll-row:hover {
+  background: rgba(255, 255, 255, 0.75);
+  transform: translateX(3px);
+  border-color: var(--antique-gold);
+}
+
+.wish-row-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.wish-num-badge {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.82rem;
+  color: var(--antique-gold);
+  min-width: 24px;
+}
+
+.wish-text-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--wine);
+  font-weight: 600;
+}
+
+/* Vintage Status Seals */
+.seal-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.seal-fulfilled {
+  background: rgba(185, 154, 98, 0.2);
+  color: #7a5d28;
+  border: 1px solid var(--antique-gold);
+}
+
+.seal-waiting {
+  background: rgba(168, 120, 130, 0.2);
+  color: var(--dusty-burgundy);
+  border: 1px solid var(--muted-rose);
+}
+
+.seal-someday {
+  background: rgba(23, 29, 58, 0.1);
+  color: var(--cosmic-blue);
+  border: 1px dashed var(--antique-gold);
+}
+
+/* Featured Memories Cards on Left Page */
+.featured-memory-book {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--antique-gold);
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(68, 52, 38, 0.08);
+  border-radius: 4px;
+}
+
+.featured-memory-book img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 1px solid rgba(185, 154, 98, 0.4);
+  margin-bottom: 0.8rem;
+}
+
+.feat-mem-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.15rem;
+  color: var(--wine);
+  margin-bottom: 0.4rem;
+}
+
+.feat-mem-story {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-brown);
+}
+</style>
+</head>
+<body class="storybook-mode">
+
+<canvas id="cosmic-bg-canvas"></canvas>
+<div class="nebula-overlay"></div>
+
+<div class="book-universe-stage">
+  <!-- Celestial Navigation Bar -->
+  <header class="celestial-nav-bar">
+    <a href="index.html" class="celestial-brand">
+      <span class="brand-star">✦</span> SHOKHER CORNER
+    </a>
+    <div class="nav-actions">
+      <button class="btn-toc-toggle" onclick="toggleTOC()">
+        <span>📜</span> Chapters
+      </button>
+      <button class="btn-lock-book" onclick="lockStorybook()">
+        <span>🔒</span> Lock Book
+      </button>
+    </div>
+  </header>
+
+  <!-- Open Storybook Container -->
+  <main class="open-storybook floating" id="active-storybook">
+    <div class="book-spine-crease"></div>
+    <div class="book-ribbon"></div>
+
+    <a href="our-story.html" class="page-turn-zone zone-left" title="Previous Chapter">‹</a>
+    <a href="memory-vault.html" class="page-turn-zone zone-right" title="Next Chapter">›</a>
+
+    <!-- LEFT PAGE: The Real Memories Fulfilled -->
+    <section class="book-page page-left">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>Chapter III</span>
+        <span>Promises Kept</span>
+      </div>
+
+      <span class="chapter-numeral">Her Sacred Wishes</span>
+      <h1 class="chapter-heading">Shokher Corner</h1>
+      <p class="chapter-subheading">"Your little wishes deserve their own little world."</p>
+
+      <div class="chapter-divider">✦ · ✤ · ✦</div>
+
+      <!-- Real Memory 1: Sunflower -->
+      <div class="featured-memory-book">
+        <img src="public/assets/images/wishlist/sunflower.jpg" alt="Sunflower Dream" loading="lazy"/>
+        <h3 class="feat-mem-title">The First Little Dream I Fulfilled</h3>
+        <p class="feat-mem-story">
+          "Pakhi, eta tomar deya amar first kono dream. Ekbar bolesila sunflower dite. Kothay kothay ami eta likhe rekhechilam. Ek jaigai erokom seta ami disilam. First dream which ami puron koresi."
+        </p>
+        <p class="handwritten-note" style="margin-top:0.4rem;font-size:1.05rem;">
+          — Your sunflower wish. My first promise.
+        </p>
+      </div>
+
+      <!-- Real Memory 2: Mehendi -->
+      <div class="featured-memory-book">
+        <img src="public/assets/images/wishlist/mehendi-hand.jpg" alt="Mehendi Hand" loading="lazy"/>
+        <h3 class="feat-mem-title">A Little Art of Yours</h3>
+        <p class="feat-mem-story">
+          "Tomar ei shokh. This represents your passion, your love for delicate artistry, and the quiet beauty you bring to everyday moments."
+        </p>
+      </div>
+
+      <!-- Real Memory 3: TSC & Dolonchapa -->
+      <div class="featured-memory-book">
+        <img src="public/assets/images/wishlist/tsc-dolonchapa.jpg" alt="TSC Date" loading="lazy"/>
+        <h3 class="feat-mem-title">A Day at TSC</h3>
+        <p class="feat-mem-story">
+          "TSC date and dolonchapa. Rickshaw diye ghura. Ei gular modhe amar oneek favourite. Tomake dolonchapa kine disi. Tumi bolsila, puron koresi as an artist."
+        </p>
+      </div>
+
+      <!-- Real Memory 4: Boat Ride -->
+      <div class="featured-memory-book">
+        <img src="public/assets/images/wishlist/boat-ride.jpg" alt="Boat Ride" loading="lazy"/>
+        <h3 class="feat-mem-title">Somewhere on the Water</h3>
+        <p class="feat-mem-story">
+          "Noukae ghura amar shob favourite memory-r modhye ekta. Floating quietly between the breeze and the golden river."
+        </p>
+      </div>
+
+      <div class="page-number-footer">Page 04</div>
+    </section>
+
+    <!-- RIGHT PAGE: All 19 Wishlist Items -->
+    <section class="book-page page-right">
+      <div class="page-ornate-border">
+        <span class="page-corner-bl">✤</span>
+        <span class="page-corner-br">✤</span>
+      </div>
+
+      <div class="page-header-meta">
+        <span>The Wish Ledger</span>
+        <span>19 Desires</span>
+      </div>
+
+      <h2 style="font-family:'Cinzel Decorative',serif;font-size:1.4rem;color:var(--wine);margin-bottom:0.4rem;text-align:center;">
+        The Inscription of Wishes
+      </h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;text-align:center;color:var(--dusty-burgundy);font-size:0.95rem;margin-bottom:1.2rem;">
+        Every wish she whispered, recorded in ink and stars.
+      </p>
+
+      <div class="wishes-storybook-list">
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">01</span><span class="wish-text-name">Shapla Bil during rain</span></div>
+          <span class="seal-tag seal-someday">A Dream For Someday</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">02</span><span class="wish-text-name">Receiving orchid flowers</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">03</span><span class="wish-text-name">Having her hair braided</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">04</span><span class="wish-text-name">Getting a sunflower</span></div>
+          <span class="seal-tag seal-fulfilled">Fulfilled ✓</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">05</span><span class="wish-text-name">Singing together</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">06</span><span class="wish-text-name">Blue saree at TSC in the rain</span></div>
+          <span class="seal-tag seal-someday">A Dream For Someday</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">07</span><span class="wish-text-name">Receiving dolonchapa flowers</span></div>
+          <span class="seal-tag seal-fulfilled">Fulfilled ✓</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">08</span><span class="wish-text-name">Receiving kadam flowers</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">09</span><span class="wish-text-name">Going on a coffee date</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">10</span><span class="wish-text-name">Going on a boat ride</span></div>
+          <span class="seal-tag seal-fulfilled">Fulfilled ✓</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">11</span><span class="wish-text-name">Drawing mehendi</span></div>
+          <span class="seal-tag seal-fulfilled">Fulfilled ✓</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">12</span><span class="wish-text-name">A one-knee proposal</span></div>
+          <span class="seal-tag seal-someday">A Dream For Someday</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">13</span><span class="wish-text-name">Resting head on my shoulder</span></div>
+          <span class="seal-tag seal-fulfilled">Fulfilled ✓</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">14</span><span class="wish-text-name">Visiting an art gallery</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">15</span><span class="wish-text-name">Getting wet in the rain</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">16</span><span class="wish-text-name">Visiting TSC</span></div>
+          <span class="seal-tag seal-fulfilled">Fulfilled ✓</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">17</span><span class="wish-text-name">Beli flowers in her hair</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">18</span><span class="wish-text-name">Dancing in front of a stage</span></div>
+          <span class="seal-tag seal-someday">A Dream For Someday</span>
+        </div>
+        <div class="wish-scroll-row">
+          <div class="wish-row-left"><span class="wish-num-badge">19</span><span class="wish-text-name">Playing badminton together</span></div>
+          <span class="seal-tag seal-waiting">Waiting For The Moment</span>
+        </div>
+      </div>
+
+      <p class="handwritten-note" style="text-align:center;margin-top:1.8rem;">
+        "I remember every single one. And step by step, we will turn each wish into a memory."
+      </p>
+
+      <div class="page-number-footer">Page 05</div>
+    </section>
+  </main>
+
+  <!-- Navigation Controls -->
+  <nav class="storybook-nav-controls" aria-label="Book Navigation">
+    <a href="our-story.html" class="btn-book-nav btn-prev">
+      <span>‹</span> Our Story
+    </a>
+    <span class="book-current-indicator">Chapter III · Page 4-5</span>
+    <a href="memory-vault.html" class="btn-book-nav btn-next">
+      Memory Vault <span>›</span>
+    </a>
+  </nav>
+</div>
+
+<!-- Table of Contents Modal -->
+<div class="toc-overlay" id="storybook-toc">
+  <div class="toc-scroll-book">
+    <button class="toc-close-btn" onclick="toggleTOC()">×</button>
+    <h2 class="toc-title">The Chapters of Our Little Universe</h2>
+    <p class="toc-sub">Turn to any page in our storybook</p>
+    <ul class="toc-list">
+      <li class="toc-item" onclick="window.location.href='index.html'"><span class="toc-chapter-name"><span class="toc-num">01</span> The Beginning</span><span class="toc-page-num">Cover</span></li>
+      <li class="toc-item" onclick="window.location.href='our-story.html'"><span class="toc-chapter-name"><span class="toc-num">02</span> Our Story</span><span class="toc-page-num">p. 2</span></li>
+      <li class="toc-item" onclick="window.location.href='shokher-corner.html'"><span class="toc-chapter-name"><span class="toc-num">03</span> Shokher Corner</span><span class="toc-page-num">p. 4</span></li>
+      <li class="toc-item" onclick="window.location.href='memory-vault.html'"><span class="toc-chapter-name"><span class="toc-num">04</span> Memory Vault</span><span class="toc-page-num">p. 6</span></li>
+      <li class="toc-item" onclick="window.location.href='letters.html'"><span class="toc-chapter-name"><span class="toc-num">05</span> Letters to You</span><span class="toc-page-num">p. 8</span></li>
+      <li class="toc-item" onclick="window.location.href='open-when.html'"><span class="toc-chapter-name"><span class="toc-num">06</span> Open When...</span><span class="toc-page-num">p. 10</span></li>
+      <li class="toc-item" onclick="window.location.href='little-things.html'"><span class="toc-chapter-name"><span class="toc-num">07</span> Little Things About You</span><span class="toc-page-num">p. 12</span></li>
+      <li class="toc-item" onclick="window.location.href='our-universe.html'"><span class="toc-chapter-name"><span class="toc-num">08</span> Our Little Universe</span><span class="toc-page-num">p. 14</span></li>
+      <li class="toc-item" onclick="window.location.href='someday.html'"><span class="toc-chapter-name"><span class="toc-num">09</span> Someday, Together</span><span class="toc-page-num">p. 16</span></li>
+      <li class="toc-item" onclick="window.location.href='soundtrack.html'"><span class="toc-chapter-name"><span class="toc-num">10</span> Our Soundtrack</span><span class="toc-page-num">p. 18</span></li>
+      <li class="toc-item" onclick="window.location.href='reasons.html'"><span class="toc-chapter-name"><span class="toc-num">11</span> Reasons I Love You</span><span class="toc-page-num">p. 20</span></li>
+      <li class="toc-item" onclick="window.location.href='secret-room.html'"><span class="toc-chapter-name"><span class="toc-num">12</span> ✦ Secret Room</span><span class="toc-page-num">p. 22</span></li>
+      <li class="toc-item" onclick="window.location.href='before-you-leave.html'"><span class="toc-chapter-name"><span class="toc-num">13</span> Before You Leave</span><span class="toc-page-num">p. 24</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="public/assets/js/storybook.js"></script>
+</body>
+</html>

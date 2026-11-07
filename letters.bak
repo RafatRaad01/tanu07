@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Letters to You – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.page-hero{background:linear-gradient(160deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+.letters-wrap{max-width:900px;margin:5rem auto;padding:0 1.5rem 5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;}
+.letter-card{background:var(--cream);border:1px solid rgba(197,161,109,.3);padding:2rem;cursor:pointer;transition:.4s;position:relative;overflow:hidden;}
+.letter-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--gold);}
+.letter-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(45,16,29,.12);}
+.letter-num{font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--gold);margin-bottom:.5rem;}
+.letter-title{font-size:1.5rem;color:var(--burgundy);margin-bottom:.6rem;}
+.letter-preview{font-size:.85rem;color:var(--wine);font-style:italic;line-height:1.6;}
+.letter-btn{display:inline-block;margin-top:1.2rem;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--burgundy);border-bottom:1px solid var(--gold);padding-bottom:2px;}
+.modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(45,16,29,.92);align-items:center;justify-content:center;padding:2rem;}
+.modal.open{display:flex;}
+.letter-paper{max-width:650px;width:100%;background:var(--ivory);padding:3rem;position:relative;max-height:85vh;overflow-y:auto;animation:paperIn .4s ease;}
+@keyframes paperIn{from{transform:scale(.95) translateY(20px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.letter-paper h2{font-size:2rem;color:var(--burgundy);margin-bottom:.3rem;}
+.letter-paper .date{font-family:'Dancing Script',cursive;color:var(--gold);font-size:1rem;margin-bottom:2rem;border-bottom:1px solid var(--blush);padding-bottom:1rem;}
+.letter-paper .body{font-size:.95rem;line-height:2;color:var(--wine);white-space:pre-line;}
+.letter-paper .sign{font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--rose);margin-top:2rem;text-align:right;}
+.modal-close{position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.8rem;color:var(--wine);cursor:pointer;}
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li><li><a href="letters.html" class="active">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li><li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li><li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<div class="page-hero">
+  <p class="page-label">Chapter Four</p>
+  <h1 class="page-title">Letters to You</h1>
+  <p class="page-sub">Some feelings deserve more than a message.</p>
+</div>
+<div class="letters-wrap">
+  <div class="letter-card" onclick="openLetter(0)">
+    <p class="letter-num">Letter 01</p>
+    <h3 class="letter-title">A Letter for You</h3>
+    <p class="letter-preview">"There are some things I carry quietly — things I do not say out loud, but keep somewhere close to my heart..."</p>
+    <span class="letter-btn">Read the letter →</span>
+  </div>
+  <div class="letter-card" onclick="openLetter(1)">
+    <p class="letter-num">Letter 02</p>
+    <h3 class="letter-title">When I Miss You</h3>
+    <p class="letter-preview">"Distance is strange. It makes you realise how much of your day belongs to someone else..."</p>
+    <span class="letter-btn">Read the letter →</span>
+  </div>
+  <div class="letter-card" onclick="openLetter(2)">
+    <p class="letter-num">Letter 03</p>
+    <h3 class="letter-title">Things I Never Said</h3>
+    <p class="letter-preview">"Some words stay inside you too long. I think it is time to let a few of them out..."</p>
+    <span class="letter-btn">Read the letter →</span>
+  </div>
+  <div class="letter-card" onclick="openLetter(3)">
+    <p class="letter-num">Letter 04</p>
+    <h3 class="letter-title">A Little Thank You</h3>
+    <p class="letter-preview">"Thank you for the sunflower wish. Thank you for the TSC memories. Thank you for being exactly who you are..."</p>
+    <span class="letter-btn">Read the letter →</span>
+  </div>
+  <div class="letter-card" onclick="openLetter(4)">
+    <p class="letter-num">Letter 05</p>
+    <h3 class="letter-title">My Favourite Person</h3>
+    <p class="letter-preview">"I do not say this easily. But you are, without question, my favourite kind of person..."</p>
+    <span class="letter-btn">Read the letter →</span>
+  </div>
+  <div class="letter-card" onclick="openLetter(5)">
+    <p class="letter-num">Letter 06</p>
+    <h3 class="letter-title">A Letter for the Future</h3>
+    <p class="letter-preview">"I am writing this to you from a moment in the present, hoping you read it in a future that is beautiful..."</p>
+    <span class="letter-btn">Read the letter →</span>
+  </div>
+</div>
+<div class="modal" id="modal">
+  <div class="letter-paper">
+    <button class="modal-close" onclick="closeLetter()">×</button>
+    <h2 id="lTitle"></h2>
+    <p class="date" id="lDate"></p>
+    <p class="body" id="lBody"></p>
+    <p class="sign" id="lSign"></p>
+  </div>
+</div>
+<footer><p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Letters to You &nbsp;·&nbsp; Shokher Corner</p></footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+const letters=[
+  {title:'A Letter for You',date:'Written with love, just for you.',body:'My dearest Pakhi,\n\nThere are some things I carry quietly — things I do not say out loud, but keep somewhere close to my heart.\n\nI made this little world for you because I wanted you to have something that feels like us.\n\n[Edit this letter — write your own words here. Tell her something you have been meaning to say.]',sign:'With love.'},
+  {title:'When I Miss You',date:'For whenever the distance feels long.',body:'Pakhi,\n\nDistance is strange. It makes you realise how much of your day belongs to someone else.\n\nOn the days I miss you most, I think about the little things — your smile, our conversations, the way you remember things.\n\n[Edit this letter — write what you feel when you miss her.]',sign:'Always thinking of you.'},
+  {title:'Things I Never Said',date:'Words that were waiting to be written.',body:'Pakhi,\n\nSome words stay inside you too long. I think it is time to let a few of them out.\n\n[Edit this letter — write the things you have been holding inside but never found the right moment to say.]',sign:'Finally, yours.'},
+  {title:'A Little Thank You',date:'For everything, big and small.',body:'Pakhi,\n\nThank you for the sunflower wish that became my first little promise.\nThank you for the TSC memories and the dolonchapa moments.\nThank you for the boat ride that became one of my favourite memories.\nThank you for being exactly who you are.\n\n[Edit this letter — add your own thank yous.]',sign:'Grateful for you.'},
+  {title:'My Favourite Person',date:'Something I mean very simply.',body:'Pakhi,\n\nI do not say this easily. But you are, without question, my favourite kind of person.\n\n[Edit this letter — tell her why she is your favourite person. Be specific. Be honest.]',sign:'Your favourite person\'s favourite person.'},
+  {title:'A Letter for the Future',date:'For a beautiful day ahead.',body:'Pakhi,\n\nI am writing this to you from a moment in the present, hoping you read it in a future that is beautiful.\n\nI hope by then, we have made more memories. I hope by then, more little wishes have been fulfilled.\n\nOur story is still being written. And I am excited for every new chapter.\n\n[Edit this letter — write what you hope for your future together.]',sign:'Excited for what comes next.'}
+];
+function openLetter(i){const l=letters[i];document.getElementById('lTitle').textContent=l.title;document.getElementById('lDate').textContent=l.date;document.getElementById('lBody').textContent=l.body;document.getElementById('lSign').textContent=l.sign;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeLetter(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeLetter();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLetter();});
+</script>
+</body>
+</html>

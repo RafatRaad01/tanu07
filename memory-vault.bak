@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Memory Vault – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.page-hero{background:linear-gradient(160deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+.gallery-wrap{max-width:1100px;margin:4rem auto;padding:0 1.5rem 5rem;}
+.gallery-grid{columns:3 300px;gap:1.5rem;}
+.gallery-item{break-inside:avoid;margin-bottom:1.5rem;cursor:pointer;overflow:hidden;position:relative;}
+.gallery-item img{width:100%;display:block;transition:.5s;}
+.gallery-item:hover img{transform:scale(1.05);}
+.gallery-overlay{position:absolute;inset:0;background:rgba(45,16,29,0);display:flex;align-items:flex-end;padding:1rem;transition:.4s;}
+.gallery-item:hover .gallery-overlay{background:rgba(45,16,29,.5);}
+.gallery-caption{color:var(--ivory);font-family:'Dancing Script',cursive;font-size:1rem;opacity:0;transform:translateY(10px);transition:.4s;}
+.gallery-item:hover .gallery-caption{opacity:1;transform:translateY(0);}
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(29,10,20,.97);align-items:center;justify-content:center;}
+.lightbox.open{display:flex;}
+.lb-img-wrap{max-width:80vw;max-height:85vh;position:relative;}
+.lb-img-wrap img{max-width:100%;max-height:85vh;object-fit:contain;display:block;}
+.lb-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(45,16,29,.9));padding:2rem 1.5rem 1rem;color:var(--ivory);}
+.lb-info h3{font-size:1.5rem;margin-bottom:.3rem;}
+.lb-info p{font-family:'Dancing Script',cursive;color:var(--blush);}
+.lb-close{position:fixed;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--ivory);font-size:2.5rem;cursor:pointer;line-height:1;z-index:1001;}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(248,241,232,.1);border:none;color:var(--ivory);font-size:2rem;padding:1rem .8rem;cursor:pointer;z-index:1001;transition:.3s;}
+.lb-nav:hover{background:rgba(248,241,232,.2);}
+.lb-prev{left:1rem;}.lb-next{right:1rem;}
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html" class="active">Memory Vault</a></li><li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li><li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li><li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<div class="page-hero">
+  <p class="page-label">Chapter Three</p>
+  <h1 class="page-title">Memory Vault</h1>
+  <p class="page-sub">Our private collection of moments. Never to be forgotten.</p>
+</div>
+<div class="gallery-wrap">
+  <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLB()">×</button>
+  <button class="lb-nav lb-prev" onclick="navLB(-1)">‹</button>
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt=""/>
+    <div class="lb-info"><h3 id="lbTitle"></h3><p id="lbCaption"></p></div>
+  </div>
+  <button class="lb-nav lb-next" onclick="navLB(1)">›</button>
+</div>
+<footer>
+  <p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Memory Vault &nbsp;·&nbsp; Shokher Corner</p>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+const photos=[
+  {src:'public/assets/images/wishlist/sunflower.jpg',title:'The Sunflower',caption:'Your first little wish. My first little promise.'},
+  {src:'public/assets/images/wishlist/mehendi-hand.jpg',title:'A Little Art of Yours',caption:'One of those little things that make you, you.'},
+  {src:'public/assets/images/wishlist/tsc-dolonchapa.jpg',title:'A Day at TSC',caption:'Dolonchapa, rickshaw rides, and a day to remember.'},
+  {src:'public/assets/images/wishlist/boat-ride.jpg',title:'Somewhere on the Water',caption:'One of my favourite memories, floating between moment and forever.'},
+  {src:'public/assets/images/gallery/memory1.jpg',title:'Our Memory',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/memory2.jpg',title:'Another Moment',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/memory3.jpg',title:'A Favourite Day',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/memory4.jpg',title:'Together',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/photo-orig1.jpg',title:'Memory',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/photo-orig2.jpg',title:'Memory',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/photo-orig3.jpg',title:'Memory',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/photo-orig4.jpg',title:'Memory',caption:'[Add your caption here]'},
+  {src:'public/assets/images/gallery/photo-orig5.jpg',title:'Memory',caption:'[Add your caption here]'},
+];
+let cur=0;
+const grid=document.getElementById('galleryGrid');
+photos.forEach((p,i)=>{
+  const el=document.createElement('div');
+  el.className='gallery-item';
+  el.innerHTML=`<img src="${p.src}" alt="${p.title}" loading="lazy"/><div class="gallery-overlay"><div class="gallery-caption">${p.title}</div></div>`;
+  el.addEventListener('click',()=>openLB(i));
+  grid.appendChild(el);
+});
+function openLB(i){cur=i;document.getElementById('lbImg').src=photos[i].src;document.getElementById('lbTitle').textContent=photos[i].title;document.getElementById('lbCaption').textContent=photos[i].caption;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+function navLB(dir){cur=(cur+dir+photos.length)%photos.length;openLB(cur);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')navLB(-1);if(e.key==='ArrowRight')navLB(1);});
+</script>
+</body>
+</html>

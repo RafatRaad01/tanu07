@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Little Universe – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--wine);color:var(--ivory);overflow-x:hidden;min-height:100vh;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(45,16,29,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(197,161,109,0.2);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:rgba(248,241,232,.7);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);}
+.mobile-nav{display:none;flex-direction:column;background:var(--wine);border-top:1px solid rgba(197,161,109,.2);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--blush);border-bottom:1px solid rgba(197,161,109,.1);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.universe{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;overflow:hidden;}
+.universe-title{text-align:center;margin-bottom:4rem;position:relative;z-index:2;}
+.universe-title .label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.universe-title h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:.5rem;}
+.universe-title p{color:var(--blush);font-style:italic;}
+.star-map{position:relative;width:min(700px,90vw);height:min(500px,70vw);margin:0 auto 4rem;}
+.star{position:absolute;cursor:pointer;transform:translate(-50%,-50%);transition:.3s;}
+.star-dot{width:10px;height:10px;background:var(--gold);border-radius:50%;box-shadow:0 0 10px var(--gold),0 0 20px rgba(197,161,109,.4);animation:twinkle 3s ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+.star:hover .star-dot{background:var(--ivory);box-shadow:0 0 15px var(--ivory),0 0 30px rgba(248,241,232,.5);}
+.star-label{position:absolute;top:16px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.7rem;color:var(--blush);opacity:0;transition:.3s;pointer-events:none;}
+.star:hover .star-label{opacity:1;}
+.final-line{text-align:center;max-width:600px;margin:2rem auto 0;font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--rose);line-height:1.6;position:relative;z-index:2;}
+.modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(29,10,20,.95);align-items:center;justify-content:center;padding:2rem;}
+.modal.open{display:flex;}
+.star-card{max-width:500px;width:100%;background:var(--wine);border:1px solid rgba(197,161,109,.3);padding:2.5rem;position:relative;animation:popIn .4s ease;}
+@keyframes popIn{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+.star-card h2{font-size:1.8rem;color:var(--gold);margin-bottom:.5rem;}
+.star-card .date{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-bottom:1.2rem;}
+.star-card p{font-size:.9rem;line-height:1.8;color:var(--blush);}
+.modal-close{position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.8rem;color:var(--gold);cursor:pointer;}
+/* Constellation lines via SVG */
+.svg-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+footer{background:rgba(0,0,0,.3);color:rgba(248,241,232,.4);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li><li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li><li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html" class="active">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li><li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<div class="universe">
+  <div class="universe-title">
+    <p class="label">Chapter Seven</p>
+    <h1>Our Little Universe</h1>
+    <p>Some moments deserve their own stars. Click each one.</p>
+  </div>
+  <div class="star-map" id="starMap">
+    <svg class="svg-lines" id="svgLines"></svg>
+  </div>
+  <p class="final-line">"Maybe the universe is big, but my favourite little world is the one we share."</p>
+</div>
+<div class="modal" id="modal">
+  <div class="star-card">
+    <button class="modal-close" onclick="closeM()">×</button>
+    <h2 id="sTitle"></h2>
+    <p class="date" id="sDate"></p>
+    <p id="sStory"></p>
+  </div>
+</div>
+<footer><p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Our Universe &nbsp;·&nbsp; Shokher Corner</p></footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+const stars=[
+  {x:20,y:30,label:'Sunflower',title:'The Sunflower Star',date:'First wish fulfilled',story:'Pakhi, eta tomar deya amar first kono dream. Ekbar bolesila sunflower dite. First dream which ami puron koresi.'},
+  {x:50,y:15,label:'Beginning',title:'Where It Began',date:'The beginning',story:'[Edit this — write about the moment it all started, what you felt, what you noticed.]'},
+  {x:75,y:35,label:'TSC',title:'A Day at TSC',date:'Our TSC date',story:'TSC date and dolonchapa. Rickshaw diye ghura. Tomake dolonchapa kine disi. Tumi bolsila, puron koresi as an artist.'},
+  {x:35,y:60,label:'Mehendi',title:'A Little Art of Yours',date:'Her artistic wish',story:'Tomar ei shokh. The mehendi, the creativity — this star shines for the artist in you.'},
+  {x:65,y:65,label:'Boat Ride',title:'On the Water',date:'The boat ride',story:'Noukae ghura amar shob favourite memory-r modhye ekta. Floating between the moment and forever.'},
+  {x:85,y:20,label:'Someday',title:'A Dream for Someday',date:'Still waiting',story:'[Edit this — add a future dream that you both share. Something you are still planning.]'},
+  {x:15,y:75,label:'Little Wish',title:'One More Little Wish',date:'Still being planned',story:'[Edit this — add another wish or memory you want to commemorate as its own star.]'},
+];
+const map=document.getElementById('starMap');
+const svg=document.getElementById('svgLines');
+const pts=[];
+stars.forEach((s,i)=>{
+  const lx=s.x/100,ly=s.y/100;
+  pts.push({lx,ly});
+  const el=document.createElement('div');
+  el.className='star';
+  el.style.left=s.x+'%';el.style.top=s.y+'%';
+  el.innerHTML=`<div class="star-dot"></div><span class="star-label">${s.label}</span>`;
+  el.style.animationDelay=(i*0.4)+'s';
+  el.addEventListener('click',()=>openM(i));
+  map.appendChild(el);
+});
+// draw constellation lines
+const lines=[[0,2],[2,3],[3,4],[0,1],[1,5]];
+setTimeout(()=>{
+  const w=map.offsetWidth,h=map.offsetHeight;
+  lines.forEach(([a,b])=>{
+    const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1',pts[a].lx*w);line.setAttribute('y1',pts[a].ly*h);
+    line.setAttribute('x2',pts[b].lx*w);line.setAttribute('y2',pts[b].ly*h);
+    line.setAttribute('stroke','rgba(197,161,109,0.2)');line.setAttribute('stroke-width','1');
+    svg.appendChild(line);
+  });
+},100);
+function openM(i){const s=stars[i];document.getElementById('sTitle').textContent=s.title;document.getElementById('sDate').textContent=s.date;document.getElementById('sStory').textContent=s.story;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeM(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeM();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "chapters": [
+    {
+      "title": "The Beginning",
+      "date": "",
+      "image": "public/assets/images/memories/memory1.jpg",
+      "heading": "The Beginning",
+      "story": "[Editable placeholder for the beginning of your story]",
+      "caption": ""
+    },
+    {
+      "title": "First Little Moments",
+      "date": "",
+      "image": "public/assets/images/memories/memory2.png",
+      "heading": "First Little Moments",
+      "story": "[Editable placeholder]",
+      "caption": ""
+    },
+    {
+      "title": "Wishes Remembered",
+      "date": "",
+      "image": "public/assets/images/memories/memory3.jpg",
+      "heading": "Wishes I Remembered",
+      "story": "[Editable placeholder]",
+      "caption": ""
+    },
+    {
+      "title": "Favourite Dates",
+      "date": "",
+      "image": "public/assets/images/memories/memory4.jpg",
+      "heading": "Our Favourite Dates",
+      "story": "[Editable placeholder]",
+      "caption": ""
+    },
+    {
+      "title": "Memories I Keep",
+      "date": "",
+      "image": "public/assets/images/memories/memory5.jpg",
+      "heading": "The Memories I Keep",
+      "story": "[Editable placeholder]",
+      "caption": ""
+    },
+    {
+      "title": "Dreams Ahead",
+      "date": "",
+      "image": "public/assets/images/memories/memory5.jpg",
+      "heading": "Dreams Ahead",
+      "story": "[Editable placeholder]",
+      "caption": ""
+    }
+  ]
+}

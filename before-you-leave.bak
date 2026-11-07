@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Before You Leave – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--wine);color:var(--ivory);overflow-x:hidden;min-height:100vh;}
+h1,h2{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(45,16,29,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(197,161,109,0.2);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:rgba(248,241,232,.6);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);}
+.mobile-nav{display:none;flex-direction:column;background:var(--wine);border-top:1px solid rgba(197,161,109,.2);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--blush);border-bottom:1px solid rgba(197,161,109,.1);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.final-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.final-bg{position:absolute;inset:0;background-image:url('public/assets/images/hero/hero-final.jpg');background-size:cover;background-position:center;}
+.final-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(45,16,29,.8),rgba(29,10,20,.95));}
+.final-content{position:relative;text-align:center;padding:3rem 2rem;max-width:720px;animation:fadeUp 1.5s ease forwards;opacity:0;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}from{opacity:0;transform:translateY(30px);}}
+.final-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.final-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.final-sub{color:var(--blush);font-style:italic;margin-bottom:3rem;font-size:1.1rem;}
+.final-letter{font-size:.95rem;line-height:2.1;color:rgba(248,241,232,.8);max-width:600px;margin:0 auto 2.5rem;text-align:left;white-space:pre-line;}
+.final-closing{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);font-style:italic;margin-bottom:2.5rem;}
+.btn-home{display:inline-block;background:var(--gold);color:var(--wine);padding:.9rem 2.5rem;text-decoration:none;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;transition:.4s;}
+.btn-home:hover{background:var(--ivory);}
+footer{background:rgba(0,0,0,.4);color:rgba(248,241,232,.3);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li><li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li><li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li><li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<section class="final-hero">
+  <div class="final-bg"></div>
+  <div class="final-overlay"></div>
+  <div class="final-content">
+    <p class="final-label">The last page</p>
+    <h1 class="final-title">Before You Leave...</h1>
+    <p class="final-sub">One last little thing.</p>
+    <p class="final-letter">If you have reached this page, you have explored a little world I made for you.
+
+Every photograph, every little wish, every letter, and every memory has a reason to be here.
+
+I hope that whenever you visit this place, you remember that the little things about you are never little to me.
+
+Thank you for being part of my favourite memories.
+
+And there are still so many more to make.</p>
+    <p class="final-closing">"Our story is still being written."</p>
+    <a href="index.html" class="btn-home">Back to the Beginning</a>
+  </div>
+</section>
+<footer><p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Shokher Corner &nbsp;·&nbsp; Made with love, just for you.</p></footer>
+<script>document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));</script>
+</body>
+</html>

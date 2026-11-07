@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Open When – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.page-hero{background:linear-gradient(160deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+.envelopes-wrap{max-width:900px;margin:5rem auto;padding:0 1.5rem 5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;}
+.envelope{background:var(--cream);border:1px solid rgba(197,161,109,.25);padding:2rem;cursor:pointer;position:relative;overflow:hidden;transition:.4s;}
+.envelope::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--rose));}
+.envelope:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(45,16,29,.12);}
+.envelope-icon{font-size:2rem;margin-bottom:1rem;display:block;}
+.envelope-label{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.envelope-title{font-size:1.4rem;color:var(--burgundy);margin-bottom:.5rem;}
+.envelope-hint{font-size:.82rem;color:var(--rose);font-style:italic;}
+.modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(45,16,29,.92);align-items:center;justify-content:center;padding:2rem;}
+.modal.open{display:flex;}
+.letter-paper{max-width:600px;width:100%;background:var(--ivory);padding:3rem;position:relative;max-height:85vh;overflow-y:auto;animation:paperIn .4s ease;}
+@keyframes paperIn{from{transform:scale(.95);opacity:0;}to{transform:scale(1);opacity:1;}}
+.letter-paper h2{font-size:2rem;color:var(--burgundy);margin-bottom:1.5rem;border-bottom:1px solid var(--blush);padding-bottom:1rem;}
+.letter-paper p{font-size:.95rem;line-height:2;color:var(--wine);white-space:pre-line;}
+.letter-paper .sign{font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--rose);margin-top:2rem;text-align:right;}
+.modal-close{position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.8rem;color:var(--wine);cursor:pointer;}
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li><li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html" class="active">Open When</a></li><li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li><li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<div class="page-hero">
+  <p class="page-label">Chapter Five</p>
+  <h1 class="page-title">Open When...</h1>
+  <p class="page-sub">Whenever you need a little reminder, there is something waiting for you.</p>
+</div>
+<div class="envelopes-wrap">
+  <div class="envelope" onclick="open0()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you miss me</h3><p class="envelope-hint">Click to open this envelope</p></div>
+  <div class="envelope" onclick="open1()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you are sad</h3><p class="envelope-hint">Click to open this envelope</p></div>
+  <div class="envelope" onclick="open2()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you are angry</h3><p class="envelope-hint">Click to open this envelope</p></div>
+  <div class="envelope" onclick="open3()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you cannot sleep</h3><p class="envelope-hint">Click to open this envelope</p></div>
+  <div class="envelope" onclick="open4()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you feel alone</h3><p class="envelope-hint">Click to open this envelope</p></div>
+  <div class="envelope" onclick="open5()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you need a smile</h3><p class="envelope-hint">Click to open this envelope</p></div>
+  <div class="envelope" onclick="open6()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you are happy</h3><p class="envelope-hint">Click to open this envelope</p></div>
+  <div class="envelope" onclick="open7()"><span class="envelope-icon">✉</span><p class="envelope-label">Open When</p><h3 class="envelope-title">...you need encouragement</h3><p class="envelope-hint">Click to open this envelope</p></div>
+</div>
+<div class="modal" id="modal">
+  <div class="letter-paper">
+    <button class="modal-close" onclick="closeM()">×</button>
+    <h2 id="mTitle"></h2>
+    <p id="mBody"></p>
+    <p class="sign" id="mSign"></p>
+  </div>
+</div>
+<footer><p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Open When &nbsp;·&nbsp; Shokher Corner</p></footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+const msgs=[
+  {t:'Open When... you miss me',b:'Pakhi,\n\nI know. Missing someone feels heavy sometimes.\n\nBut while you are missing me, I want you to know — I am probably thinking about you too.\n\n[Edit this message — write something personal that she can read when she misses you.]',s:'Not that far away.'},
+  {t:'Open When... you are sad',b:'Pakhi,\n\nI wish I could make everything okay right now.\n\nSome sadness is just part of feeling things deeply. And you feel things deeply because you are a beautiful person.\n\n[Edit this message — write something gentle and comforting for her to read when she is sad.]',s:'Always rooting for you.'},
+  {t:'Open When... you are angry',b:'Pakhi,\n\nIt is okay to be angry. I am not going anywhere.\n\n[Edit this message — write something honest and kind for when she is upset, even at you.]',s:'Still here.'},
+  {t:'Open When... you cannot sleep',b:'Pakhi,\n\nIf you are awake and the night feels long, think about one small happy memory.\n\nMaybe a sunflower. Maybe a boat ride. Maybe a TSC date. Find one and hold onto it.\n\n[Edit this message — give her something peaceful to think about at night.]',s:'Sleep well, Pakhi.'},
+  {t:'Open When... you feel alone',b:'Pakhi,\n\nYou are not alone.\n\nSomewhere, there is a little digital world full of your memories, your wishes, and words I wrote just for you.\n\n[Edit this message — write something that makes her feel truly seen and not alone.]',s:'Always close by.'},
+  {t:'Open When... you need a smile',b:'Pakhi,\n\nRemember the sunflower? The dolonchapa? The boat ride?\n\nYou made those moments special just by being there.\n\n[Edit this message — write something funny, warm, or nostalgic that makes her smile.]',s:'Smiling with you.'},
+  {t:'Open When... you are happy',b:'Pakhi,\n\nI love that you are happy.\n\nThis is one of the best versions of you — when things feel light and good.\n\n[Edit this message — celebrate her happiness with her. Write something that matches her joy.]',s:'Happy for you, always.'},
+  {t:'Open When... you need encouragement',b:'Pakhi,\n\nYou can do it. Whatever it is.\n\nI have seen you remember beautiful things, do artistic things, and care about things deeply. That takes a kind of strength most people do not notice.\n\n[Edit this message — write specific encouragement for her.]',s:'Your biggest supporter.'}
+];
+function openM(i){document.getElementById('mTitle').textContent=msgs[i].t;document.getElementById('mBody').textContent=msgs[i].b;document.getElementById('mSign').textContent=msgs[i].s;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeM(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+function open0(){openM(0);}function open1(){openM(1);}function open2(){openM(2);}function open3(){openM(3);}
+function open4(){openM(4);}function open5(){openM(5);}function open6(){openM(6);}function open7(){openM(7);}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeM();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
+</script>
+</body>
+</html>

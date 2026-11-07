@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shokher Corner – Her Wishes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+
+.page-hero{background:linear-gradient(135deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.page-hero::after{content:'';position:absolute;inset:0;opacity:.04;pointer-events:none;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+
+.section{padding:5rem 1.5rem;}
+.section-label{text-align:center;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.section-title{text-align:center;font-size:2.2rem;color:var(--burgundy);margin-bottom:.5rem;}
+.section-sub{text-align:center;color:var(--rose);font-style:italic;margin-bottom:3rem;font-size:.95rem;}
+
+/* Wishes with photos */
+.memory-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2.5rem;}
+.memory-card{background:var(--ivory);box-shadow:0 4px 20px rgba(45,16,29,.08);overflow:hidden;cursor:pointer;transition:.4s;}
+.memory-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(45,16,29,.14);}
+.memory-card img{width:100%;height:260px;object-fit:cover;transition:.5s;}
+.memory-card:hover img{transform:scale(1.04);}
+.memory-body{padding:1.5rem;}
+.memory-tag{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.memory-title{font-size:1.5rem;color:var(--burgundy);margin-bottom:.6rem;}
+.memory-story{font-size:.88rem;line-height:1.75;color:var(--wine);margin-bottom:1rem;}
+.memory-caption{font-family:'Dancing Script',cursive;font-size:.95rem;color:var(--rose);border-top:1px solid var(--blush);padding-top:.7rem;}
+
+/* Wishlist items */
+.wish-wrap{max-width:900px;margin:3rem auto 0;padding:0 1.5rem;}
+.wish-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid rgba(74,23,41,0.08);transition:.3s;}
+.wish-item:hover{background:var(--cream);}
+.wish-num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);min-width:2rem;}
+.wish-name{flex:1;font-size:.95rem;color:var(--wine);}
+.status{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;padding:.3rem .8rem;border-radius:50px;}
+.status-fulfilled{background:rgba(197,161,109,.2);color:var(--gold);border:1px solid var(--gold);}
+.status-waiting{background:rgba(197,143,152,.15);color:var(--rose);border:1px solid var(--rose);}
+.status-someday{background:rgba(45,16,29,.06);color:var(--wine);border:1px solid rgba(45,16,29,.2);}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(45,16,29,.95);align-items:center;justify-content:center;padding:2rem;}
+.lightbox.open{display:flex;}
+.lb-inner{max-width:700px;width:100%;background:var(--ivory);overflow:hidden;animation:lbIn .4s ease;}
+@keyframes lbIn{from{transform:scale(.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+.lb-img{width:100%;max-height:400px;object-fit:cover;}
+.lb-body{padding:2rem;}
+.lb-title{font-size:1.8rem;color:var(--burgundy);margin-bottom:.6rem;}
+.lb-story{font-size:.9rem;line-height:1.75;color:var(--wine);margin-bottom:1rem;}
+.lb-caption{font-family:'Dancing Script',cursive;color:var(--rose);}
+.lb-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--ivory);font-size:2rem;cursor:pointer;line-height:1;}
+
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="shokher-corner.html" class="active">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li>
+      <li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li>
+      <li><a href="little-things.html">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li>
+      <li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li>
+      <li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <p class="page-label">Chapter Two</p>
+  <h1 class="page-title">Shokher Corner</h1>
+  <p class="page-sub">Your little wishes deserve their own little world.</p>
+</div>
+
+<!-- Real memories with photos -->
+<section class="section" style="background:var(--cream);">
+  <p class="section-label">With Real Photos</p>
+  <h2 class="section-title">The Memories I Made for You</h2>
+  <p class="section-sub">The ones I remember most.</p>
+  <div class="memory-grid">
+    <div class="memory-card" onclick="openLB('memory1')">
+      <img src="public/assets/images/wishlist/sunflower.jpg" alt="Sunflower"/>
+      <div class="memory-body">
+        <p class="memory-tag">Fulfilled ✓</p>
+        <h3 class="memory-title">The First Little Dream I Fulfilled</h3>
+        <p class="memory-story">Pakhi, eta tomar deya amar first kono dream. Ekbar bolesila sunflower dite. Kothay kothay ami eta likhe rekhechilam. Ek jaigai erokom seta ami disilam. First dream which ami puron koresi.</p>
+        <p class="memory-caption">Your sunflower wish. My first little promise to remember.</p>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLB('memory2')">
+      <img src="public/assets/images/wishlist/mehendi-hand.jpg" alt="Mehendi"/>
+      <div class="memory-body">
+        <p class="memory-tag">Her Art ✦</p>
+        <h3 class="memory-title">A Little Art of Yours</h3>
+        <p class="memory-story">Tomar ei shokh. This represents everything that is beautiful and artistic about you — the way your creativity finds expression in the most delicate things.</p>
+        <p class="memory-caption">One of those little things that make you, you.</p>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLB('memory3')">
+      <img src="public/assets/images/wishlist/tsc-dolonchapa.jpg" alt="TSC date"/>
+      <div class="memory-body">
+        <p class="memory-tag">Fulfilled ✓</p>
+        <h3 class="memory-title">A Day at TSC</h3>
+        <p class="memory-story">TSC date and dolonchapa. Rickshaw diye ghura. Ei gular modhe amar oneek favourite. Tomake dolonchapa kine disi. Tumi bolsila, puron koresi as an artist.</p>
+        <p class="memory-caption">Dolonchapa, rickshaw rides, and a day I wish I could relive.</p>
+      </div>
+    </div>
+    <div class="memory-card" onclick="openLB('memory4')">
+      <img src="public/assets/images/wishlist/boat-ride.jpg" alt="Boat ride"/>
+      <div class="memory-body">
+        <p class="memory-tag">Fulfilled ✓</p>
+        <h3 class="memory-title">Somewhere on the Water</h3>
+        <p class="memory-story">Noukae ghura amar shob favourite memory-r modhye ekta. Some moments feel like they happen outside of time — this was one of those.</p>
+        <p class="memory-caption">One of my favourite memories, floating somewhere between the moment and forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Complete Wishlist -->
+<section class="section">
+  <p class="section-label">All Wishes</p>
+  <h2 class="section-title">Shokher Corner — Full Wishlist</h2>
+  <p class="section-sub">Every little wish she ever mentioned. I remember all of them.</p>
+  <div class="wish-wrap">
+    <div class="wish-item"><span class="wish-num">01</span><span class="wish-name">Going to Shapla Bil during rain</span><span class="status status-someday">A dream for someday</span></div>
+    <div class="wish-item"><span class="wish-num">02</span><span class="wish-name">Receiving orchid flowers</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">03</span><span class="wish-name">Having her hair braided</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">04</span><span class="wish-name">Getting a sunflower</span><span class="status status-fulfilled">Fulfilled ✓</span></div>
+    <div class="wish-item"><span class="wish-num">05</span><span class="wish-name">Singing</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">06</span><span class="wish-name">Wearing a blue saree and visiting TSC in the rain</span><span class="status status-someday">A dream for someday</span></div>
+    <div class="wish-item"><span class="wish-num">07</span><span class="wish-name">Receiving dolonchapa flowers</span><span class="status status-fulfilled">Fulfilled ✓</span></div>
+    <div class="wish-item"><span class="wish-num">08</span><span class="wish-name">Receiving kadam flowers</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">09</span><span class="wish-name">Going on a coffee date</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">10</span><span class="wish-name">Going on a boat ride</span><span class="status status-fulfilled">Fulfilled ✓</span></div>
+    <div class="wish-item"><span class="wish-num">11</span><span class="wish-name">Drawing mehendi</span><span class="status status-fulfilled">Fulfilled ✓</span></div>
+    <div class="wish-item"><span class="wish-num">12</span><span class="wish-name">A one-knee proposal</span><span class="status status-someday">A dream for someday</span></div>
+    <div class="wish-item"><span class="wish-num">13</span><span class="wish-name">Resting her head on my shoulder</span><span class="status status-fulfilled">Fulfilled ✓</span></div>
+    <div class="wish-item"><span class="wish-num">14</span><span class="wish-name">Visiting an art gallery</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">15</span><span class="wish-name">Getting wet in the rain</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">16</span><span class="wish-name">Visiting TSC</span><span class="status status-fulfilled">Fulfilled ✓</span></div>
+    <div class="wish-item"><span class="wish-num">17</span><span class="wish-name">Having beli flowers in her hair</span><span class="status status-waiting">Waiting for the right moment</span></div>
+    <div class="wish-item"><span class="wish-num">18</span><span class="wish-name">Dancing in front of a stage</span><span class="status status-someday">A dream for someday</span></div>
+    <div class="wish-item"><span class="wish-num">19</span><span class="wish-name">Playing badminton together</span><span class="status status-waiting">Waiting for the right moment</span></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLB()">×</button>
+  <div class="lb-inner">
+    <img src="" alt="" class="lb-img" id="lbImg"/>
+    <div class="lb-body">
+      <h2 class="lb-title" id="lbTitle"></h2>
+      <p class="lb-story" id="lbStory"></p>
+      <p class="lb-caption" id="lbCaption"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Shokher Corner &nbsp;·&nbsp; Made with love, just for you.</p>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+const data={
+  memory1:{img:'public/assets/images/wishlist/sunflower.jpg',title:'The First Little Dream I Fulfilled',story:'Pakhi, eta tomar deya amar first kono dream. Ekbar bolesila sunflower dite. Kothay kothay ami eta likhe rekhechilam. Ek jaigai erokom seta ami disilam. First dream which ami puron koresi.',caption:'Your sunflower wish. My first little promise to remember.'},
+  memory2:{img:'public/assets/images/wishlist/mehendi-hand.jpg',title:'A Little Art of Yours',story:'Tomar ei shokh. This represents everything that is beautiful and artistic about you — the way your creativity finds expression in the most delicate things.',caption:'One of those little things that make you, you.'},
+  memory3:{img:'public/assets/images/wishlist/tsc-dolonchapa.jpg',title:'A Day at TSC',story:'TSC date and dolonchapa. Rickshaw diye ghura. Ei gular modhe amar oneek favourite. Tomake dolonchapa kine disi. Tumi bolsila, puron koresi as an artist.',caption:'Dolonchapa, rickshaw rides, and a day I wish I could relive.'},
+  memory4:{img:'public/assets/images/wishlist/boat-ride.jpg',title:'Somewhere on the Water',story:'Noukae ghura amar shob favourite memory-r modhye ekta. Some moments feel like they happen outside of time — this was one of those.',caption:'One of my favourite memories, floating somewhere between the moment and forever.'}
+};
+function openLB(id){const d=data[id];document.getElementById('lbImg').src=d.img;document.getElementById('lbTitle').textContent=d.title;document.getElementById('lbStory').textContent=d.story;document.getElementById('lbCaption').textContent=d.caption;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLB();});
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Little Things About You – Shokher Corner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--burgundy:#4A1729;--wine:#2D101D;--ivory:#F8F1E8;--cream:#EFE3D5;--rose:#C58F98;--blush:#E8C7CA;--gold:#C5A16D;}
+body{font-family:'Lato',sans-serif;background:var(--ivory);color:var(--wine);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;}
+nav{position:sticky;top:0;z-index:100;background:rgba(248,241,232,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,23,41,0.15);}
+.nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--burgundy);text-decoration:none;}
+.nav-links{display:flex;gap:1.2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--wine);font-size:.82rem;transition:color .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--burgundy);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--wine);}
+.mobile-nav{display:none;flex-direction:column;background:var(--ivory);border-top:1px solid rgba(74,23,41,0.1);}
+.mobile-nav a{padding:.8rem 1.5rem;text-decoration:none;color:var(--wine);border-bottom:1px solid rgba(74,23,41,0.05);}
+.mobile-nav.open{display:flex;}
+@media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}}
+.page-hero{background:linear-gradient(160deg,var(--wine),var(--burgundy));padding:6rem 2rem 4rem;text-align:center;}
+.page-label{font-size:.75rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.page-title{font-size:clamp(2.5rem,6vw,4rem);color:var(--ivory);margin-bottom:1rem;}
+.page-sub{color:var(--blush);font-style:italic;font-size:1.1rem;}
+.things-wrap{max-width:1000px;margin:5rem auto;padding:0 1.5rem 5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;}
+.thing-card{background:var(--cream);padding:2rem;border-left:3px solid var(--gold);transition:.4s;}
+.thing-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(45,16,29,.1);}
+.thing-icon{font-size:1.6rem;margin-bottom:.8rem;}
+.thing-title{font-size:1.3rem;color:var(--burgundy);margin-bottom:.6rem;}
+.thing-desc{font-size:.88rem;line-height:1.75;color:var(--wine);}
+.thing-note{font-family:'Dancing Script',cursive;font-size:.9rem;color:var(--rose);margin-top:.8rem;}
+footer{background:var(--wine);color:rgba(248,241,232,.6);text-align:center;padding:2rem;font-size:.8rem;}
+footer a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Shokher Corner</a>
+    <ul class="nav-links">
+      <li><a href="our-story.html">Our Story</a></li><li><a href="shokher-corner.html">Shokher Corner</a></li>
+      <li><a href="memory-vault.html">Memory Vault</a></li><li><a href="letters.html">Letters</a></li>
+      <li><a href="open-when.html">Open When</a></li><li><a href="little-things.html" class="active">Little Things</a></li>
+      <li><a href="our-universe.html">Our Universe</a></li><li><a href="someday.html">Someday</a></li>
+      <li><a href="soundtrack.html">Soundtrack</a></li><li><a href="reasons.html">Reasons</a></li>
+      <li><a href="secret-room.html">✦ Secret</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="shokher-corner.html">Shokher Corner</a>
+    <a href="memory-vault.html">Memory Vault</a><a href="letters.html">Letters</a><a href="open-when.html">Open When</a>
+    <a href="little-things.html">Little Things</a><a href="our-universe.html">Our Universe</a>
+    <a href="someday.html">Someday</a><a href="soundtrack.html">Soundtrack</a><a href="reasons.html">Reasons</a>
+    <a href="secret-room.html">✦ Secret Room</a>
+  </div>
+</nav>
+<div class="page-hero">
+  <p class="page-label">Chapter Six</p>
+  <h1 class="page-title">Little Things About You</h1>
+  <p class="page-sub">It is the little things that make you unforgettable.</p>
+</div>
+<div class="things-wrap">
+  <div class="thing-card"><p class="thing-icon">🌻</p><h3 class="thing-title">Your Little Wishes</h3><p class="thing-desc">You remember little things you want — a sunflower, dolonchapa flowers, a boat ride. And somehow, those little wishes say everything about who you are.</p><p class="thing-note">[Edit this — add what you know about her wishes]</p></div>
+  <div class="thing-card"><p class="thing-icon">🎨</p><h3 class="thing-title">Your Artistic Side</h3><p class="thing-desc">The mehendi on your hand, the way you appreciate flowers and art — there is something deeply creative about how you see the world.</p><p class="thing-note">[Edit this — add what you know about her artistic nature]</p></div>
+  <div class="thing-card"><p class="thing-icon">🌸</p><h3 class="thing-title">Your Love for Flowers</h3><p class="thing-desc">Dolonchapa. Sunflowers. Orchids. Kadam. Beli. You have a whole garden of wishes, and I want to bring every one of them to you someday.</p><p class="thing-note">[Edit this — write what you know about her favourite flowers]</p></div>
+  <div class="thing-card"><p class="thing-icon">🌧</p><h3 class="thing-title">You and the Rain</h3><p class="thing-desc">Getting wet in the rain. TSC in the rain. Shapla Bil in the rain. Some of your most beautiful wishes happen in the rain.</p><p class="thing-note">[Edit this — write what you know about her and rainy days]</p></div>
+  <div class="thing-card"><p class="thing-icon">✨</p><h3 class="thing-title">Things That Make You Special</h3><p class="thing-desc">[Edit this — write something very specific about her that only you would notice. Something that proves you pay attention.]</p><p class="thing-note">The little things that make you, you.</p></div>
+  <div class="thing-card"><p class="thing-icon">🛶</p><h3 class="thing-title">Your Adventurous Side</h3><p class="thing-desc">Boat rides. Rickshaw rides. New places. You have an adventurous spirit that makes every outing feel like a small expedition.</p><p class="thing-note">[Edit this — add your personal notes about her love of adventure]</p></div>
+  <div class="thing-card"><p class="thing-icon">🎵</p><h3 class="thing-title">Your Voice</h3><p class="thing-desc">One of your wishes is to sing. I think any song you sing becomes the kind of song people remember.</p><p class="thing-note">[Edit this — write what you know about her love of music]</p></div>
+  <div class="thing-card"><p class="thing-icon">📝</p><h3 class="thing-title">Things I Remember About You</h3><p class="thing-desc">[Edit this — this is the most personal card. Fill it with the specific small things you have noticed and remembered about her that she would not expect you to remember.]</p><p class="thing-note">I remember more about you than you think.</p></div>
+</div>
+<footer><p><a href="index.html">← Back to Home</a> &nbsp;·&nbsp; Little Things &nbsp;·&nbsp; Shokher Corner</p></footer>
+<script>document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));</script>
+</body>
+</html>
